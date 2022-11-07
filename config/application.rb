@@ -10,6 +10,9 @@ module BookStore
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+    config.generators do |g|
+      g.test_framework nil
+    end
 
     # Configuration for the application, engines, and railties goes here.
     #

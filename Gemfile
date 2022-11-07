@@ -53,6 +53,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'ffaker'
   gem 'shoulda-matchers'
   gem 'byebug'
   gem 'pry'
@@ -76,8 +77,15 @@ group :test do
   gem "webdrivers"
 end
 
-gem 'i18n', '~> 1.12'
+gem 'rails-i18n', '~> 7.0.0'
 gem "devise"
 gem 'activeadmin'
 
-gem 'cssbundling-rails'
+gem 'bootstrap-sass'
+gem "haml-rails"
+gem 'jquery-rails'
+
+gem 'omniauth', '~> 1.6', '>= 1.6.1'
+gem 'omniauth-facebook', '~> 4.0'
+gem 'pagy'
+gem 'rectify'
