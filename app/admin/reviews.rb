@@ -1,5 +1,5 @@
-ActiveAdmin.register Review, as: 'BookComment' do
-  permit_params :title, :text_comment, :rating, :status, :is_verified, :user_id, :book_id
+ActiveAdmin.register Review, as: 'BookReview' do
+  permit_params :title, :text_review, :rating, :status, :is_verified, :user_id, :book_id
 
   actions :index, :show
 
@@ -12,7 +12,7 @@ ActiveAdmin.register Review, as: 'BookComment' do
   index do
     selectable_column
     column :title
-    column :text_comment
+    column :text_review
     column :rating
     column :is_verified
     column :status
@@ -23,20 +23,20 @@ ActiveAdmin.register Review, as: 'BookComment' do
   end
 
   batch_action I18n.t('admin.approve'), if: proc { @current_scope.scope_method == :unprocessed } do |ids|
-    comments = Comment.unprocessed.where(id: ids)
-    comments.any? ? comments.each(&:approved!) : flash[:error] = I18n.t('admin.error')
-    redirect_to(admin_book_comments_path)
+    reviews = Review.unprocessed.where(id: ids)
+    reviews.any? ? reviews.each(&:approved!) : flash[:error] = I18n.t('admin.error')
+    redirect_to(admin_book_reviews_path)
   end
 
   batch_action I18n.t('admin.reject'), if: proc { @current_scope.scope_method == :unprocessed } do |ids|
-    comments = Comment.unprocessed.where(id: ids)
-    comments.any? ? comments.each(&:rejected!) : flash[:error] = I18n.t('admin.error')
-    redirect_to(admin_book_comments_path)
+    reviews = Review.unprocessed.where(id: ids)
+    reviews.any? ? reviews.each(&:rejected!) : flash[:error] = I18n.t('admin.error')
+    redirect_to(admin_book_reviews_path)
   end
 
   batch_action I18n.t('admin.destroy') do |ids|
-    comments = Comment.where(id: ids)
-    comments.any? ? comments.destroy_all : flash[:error] = I18n.t('admin.error')
-    redirect_to(admin_book_comments_path)
+    reviews = Review.where(id: ids)
+    reviews.any? ? reviews.destroy_all : flash[:error] = I18n.t('admin.error')
+    redirect_to(admin_book_reviews_path)
   end
 end

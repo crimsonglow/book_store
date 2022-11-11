@@ -1,7 +1,7 @@
 class CurrentBookPresenter < Rectify::Presenter
   attribute :current_book, Book
 
-  VISIBLE_LENGTH_DESCRIPTION_BOOK = 100
+  VISIBLE_LENGTH_DESCRIPTION_BOOK = 250
 
   def all_categories
     Category.all
@@ -15,7 +15,15 @@ class CurrentBookPresenter < Rectify::Presenter
     current_book.description
   end
 
+  # def show_current_img_or_default
+  #   current_book.url(size)
+  # end
+
   def show_description
     current_book.description[0..VISIBLE_LENGTH_DESCRIPTION_BOOK]
+  end
+
+  def show_params_current_book
+    "H:#{current_book.heigth}\" x W: #{current_book.width}\" x D: #{current_book.depth}"
   end
 end

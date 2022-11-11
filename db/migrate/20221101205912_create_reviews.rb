@@ -2,7 +2,7 @@ class CreateReviews < ActiveRecord::Migration[7.0]
   def change
     create_table :reviews do |t|
       t.string :title
-      t.text :text_comment
+      t.text :text_review
       t.integer :rating, default: 0
       t.integer :status, default: 0
       t.boolean :is_verified, default: false

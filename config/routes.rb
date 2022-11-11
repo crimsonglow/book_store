@@ -6,10 +6,16 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
   root 'home#index'
-  resources :books, only: %i[index show]
-  resources :addresses, only: %i[index]
+
+  resources :books
+  resources :addresses
+  resources :categories do
+    resources :books, :index
+  end
+  resources :line_items
+  resources :orders
+  resources :addresses
+  resources :reviews
 end

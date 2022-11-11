@@ -1,7 +1,8 @@
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
 def generate_user
-  user = User.create(first_name: FFaker::Name.name, email: FFaker::Internet.email, password: FFaker::Internet.password)
+  User.create(email: FFaker::Internet.email, password: FFaker::Internet.password)
+  User.create(email: 'cyril_hackett@streich.us', password: 'password')
 end
 
 def generate_categories
@@ -11,12 +12,19 @@ def generate_categories
 end
 
 def generate_book
-Book.create(
-  checkbox: 1, title: FFaker::Book.title,
-  short_description: FFaker::Book.description(5),
-  price: rand(10...99.99).round(2),
-  category_id: rand(1..3)
-)
+  book = Book.new(
+    title: FFaker::Book.title,
+    description: FFaker::Book.description(5),
+    price: rand(10...99.99).round(2),
+    category_id: rand(1..3),
+    published_year: 2016,
+    heigth: 6.4,
+    width: 0.9,
+    depth: 5.0,
+    material: 'Hardcove, glossy paper'
+  )
+
+  book.save!
 end
 
 def generate_authors
@@ -38,6 +46,6 @@ def generate_authors_books
 end
 
 generate_categories
-20.times { generate_book }
-20.times { generate_authors }
+15.times { generate_book }
+15.times { generate_authors }
 generate_authors_books

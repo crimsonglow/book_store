@@ -4,12 +4,33 @@ en:
     reject: reject
     destroy: delete
     error: Error
+    price_book: "€%{price}"
+    add_edit_article: 'Add/Edit Article'
+    upload_book_cover: Upload book cover
   sort_books:
-    asc_title: 'Title: A - Z'
-    desc_title: 'Title: Z - A'
+    newest_first: 'Newest first'
     asc_price: 'Price: Low to hight'
     desc_price: 'Price: Hight to low'
-    newest_first: 'Newest first'
+    asc_title: 'Title: A - Z'
+    desc_title: 'Title: Z - A'
   book_page:
+    btn_all: All
+    all_categories: All books
+    back_to_result: Back to results
+    description: Description
+    year_publishing: Year of publication
+    dimensions: Dimensions
+    materials: Materials
+    read_more: Read More
+    hide_read_more: Hide Read More
+    add_to_card: Add to Cart
+    back: Back to result
     review:
       verified_reviewer: Verified Reviewer
+      success_add_comment: Success add review, but admin must confirm your review
+      reviews: Reviews
+      write_a_review: Write a Review
+      score: Score
+      title: Title
+      review: Review
+      post: Post

@@ -8,10 +8,10 @@
   %link{href: "https://fonts.googleapis.com/css?family=Open+Sans", rel: "stylesheet"}
   = stylesheet_link_tag    'application', 'data-turbolinks-track': 'reload'
   = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %script{src: "https://use.fontawesome.com/67602d7308.js"}
   
   %body
-    = render partial: 'layouts/header/header'
+    = render partial: 'layouts/header'
     = yield
-    = render partial: 'layouts/footer/footer'
+    = render partial: 'layouts/footer'
     
-  %script{src: "https://use.fontawesome.com/67602d7308.js"}

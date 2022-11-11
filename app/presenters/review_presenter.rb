@@ -4,8 +4,8 @@ class ReviewPresenter < Rectify::Presenter
   COUNT_STARS = 5
   MIN_STARS = 1
 
-  def all_comments
-    current_book.comments
+  def all_reviews
+    current_book.reviews
   end
 
   def is_verified?(review)

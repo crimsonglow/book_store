@@ -56,7 +56,11 @@ group :development, :test do
   gem 'ffaker'
   gem 'shoulda-matchers'
   gem 'byebug'
-  gem 'pry'
+  gem 'pry', '~> 0.13'
+    gem 'pry-rails'
+    gem 'pry-byebug', '3.9.0'
+    gem 'pry-rescue'
+    gem 'pry-stack_explorer'
 end
 
 group :development do
@@ -78,14 +82,24 @@ group :test do
 end
 
 gem 'rails-i18n', '~> 7.0.0'
-gem "devise"
+gem 'devise'
 gem 'activeadmin'
 
 gem 'bootstrap-sass'
-gem "haml-rails"
+gem 'haml-rails'
 gem 'jquery-rails'
 
 gem 'omniauth', '~> 1.6', '>= 1.6.1'
 gem 'omniauth-facebook', '~> 4.0'
 gem 'pagy'
 gem 'rectify'
+gem 'net-http'
+
+gem 'shrine'
+gem 'mini_magick'
+gem "aws-sdk-s3", "~> 1.14"
+gem "image_processing", "~> 1.8"
+
+gem "pundit", "~> 2.2"
+
+gem "activeadmin_addons", "~> 1.9"

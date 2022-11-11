@@ -2,11 +2,12 @@ class SortingService < ApplicationController
   attr_reader :params, :books
 
   SORT_BOOKS = {
-    asc_title: ->(instance) { instance.sort_choice('name ASC') },
-    desc_title: ->(instance) { instance.sort_choice('name DESC') },
-    asc_price: ->(instance) { instance.sort_choice('price ASC') },
-    desc_price: ->(instance) { instance.sort_choice('price DESC') },
-    newest_first: ->(instance) { instance.sort_choice('id DESC') }
+    newest_first: ->(instance) { instance.order_by('id DESC') },
+
+    asc_price: ->(instance) { instance.order_by('price ASC') },
+    desc_price: ->(instance) { instance.order_by('price DESC') },
+    asc_title: ->(instance) { instance.order_by('title ASC') },
+    desc_title: ->(instance) { instance.order_by('title DESC') }
   }.freeze
 
   def initialize(books, params)
@@ -20,13 +21,13 @@ class SortingService < ApplicationController
   end
 
   def sort_books
-    params[:sort_by] = :asc_title unless SORT_BOOKS.include?(params[:sort_by]&.to_sym)
+    params[:sort_by] = :newest_first unless SORT_BOOKS.include?(params[:sort_by]&.to_sym)
 
     @books_category = SORT_BOOKS[params[:sort_by].to_sym].call(self)
   end
 
-  def sort_choice(item)
-    @books_category = @books_category.order(item)
+  def order_by(by)
+    @books_category = @books_category.order(by)
   end
 
   def select_books_by_category

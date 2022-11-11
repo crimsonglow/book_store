@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_01_205912) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_11_132046) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,8 +29,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_01_205912) do
   end
 
   create_table "addresses", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address"
+    t.string "city"
+    t.integer "zip"
+    t.string "country"
+    t.string "phone"
+    t.integer "address_type"
+    t.integer "resource_id"
+    t.string "resource_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["resource_id"], name: "index_addresses_on_resource_id"
+    t.index ["resource_type"], name: "index_addresses_on_resource_type"
   end
 
   create_table "admin_users", force: :cascade do |t|
@@ -63,14 +75,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_01_205912) do
   end
 
   create_table "books", force: :cascade do |t|
-    t.string "checkbox"
     t.string "title"
-    t.text "short_description"
+    t.text "description"
+    t.string "photo"
+    t.integer "published_year"
+    t.float "heigth"
+    t.float "width"
+    t.float "depth"
+    t.string "material"
     t.decimal "price"
-    t.string "image"
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "image_data"
     t.index ["category_id"], name: "index_books_on_category_id"
   end
 
@@ -80,9 +97,28 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_01_205912) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "line_items", force: :cascade do |t|
+    t.integer "quantity", default: 0
+    t.bigint "book_id"
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_line_items_on_book_id"
+    t.index ["order_id"], name: "index_line_items_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "status", default: 0
+    t.string "number"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.string "title"
-    t.text "text_comment"
+    t.text "text_review"
     t.integer "rating", default: 0
     t.integer "status", default: 0
     t.boolean "is_verified", default: false
@@ -100,6 +136,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_01_205912) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -107,6 +151,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_01_205912) do
   end
 
   add_foreign_key "books", "categories"
+  add_foreign_key "line_items", "books"
+  add_foreign_key "line_items", "orders"
+  add_foreign_key "orders", "users"
   add_foreign_key "reviews", "books"
   add_foreign_key "reviews", "users"
 end
