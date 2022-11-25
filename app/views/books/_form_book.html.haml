@@ -1,6 +1,4 @@
 = form_tag line_items_path, method: :post do
-  - if user_signed_in?
-    = hidden_field_tag 'current_user', current_user.id
   = hidden_field_tag 'current_book', @current_book.id
   .col-xs-12.col-md-4
     %p.h1.in-gold-500.mt-10

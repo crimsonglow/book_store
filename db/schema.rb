@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_11_132046) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_18_103337) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -97,6 +97,35 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_11_132046) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "coupons", force: :cascade do |t|
+    t.string "key"
+    t.decimal "discount", default: "10.0"
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_coupons_on_order_id"
+  end
+
+  create_table "credit_cards", force: :cascade do |t|
+    t.string "number"
+    t.string "name"
+    t.string "date"
+    t.integer "cvv"
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_credit_cards_on_order_id"
+  end
+
+  create_table "deliveries", force: :cascade do |t|
+    t.string "method"
+    t.integer "from_days"
+    t.integer "to_days"
+    t.decimal "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "line_items", force: :cascade do |t|
     t.integer "quantity", default: 0
     t.bigint "book_id"
@@ -113,6 +142,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_11_132046) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "delivery_id"
+    t.index ["delivery_id"], name: "index_orders_on_delivery_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -146,13 +177,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_11_132046) do
     t.datetime "confirmation_sent_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "provider"
+    t.string "uid"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "books", "categories"
+  add_foreign_key "coupons", "orders"
+  add_foreign_key "credit_cards", "orders"
   add_foreign_key "line_items", "books"
   add_foreign_key "line_items", "orders"
+  add_foreign_key "orders", "deliveries"
   add_foreign_key "orders", "users"
   add_foreign_key "reviews", "books"
   add_foreign_key "reviews", "users"

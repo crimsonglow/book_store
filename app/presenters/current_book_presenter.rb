@@ -15,9 +15,8 @@ class CurrentBookPresenter < Rectify::Presenter
     current_book.description
   end
 
-  # def show_current_img_or_default
-  #   current_book.url(size)
-  # end
+  def img
+  end
 
   def show_description
     current_book.description[0..VISIBLE_LENGTH_DESCRIPTION_BOOK]

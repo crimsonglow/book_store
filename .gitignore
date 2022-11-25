@@ -39,3 +39,5 @@
 .byebug_history
 test
 /layout
+/public/uploads/
+/spec

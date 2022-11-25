@@ -45,7 +45,20 @@ def generate_authors_books
   end
 end
 
+def generate_delivery_methods
+  Delivery.create(method: 'Express Delivery', from_days: 1, to_days: 3, price: 35)
+  Delivery.create(method: 'Standart Delivery', from_days: 5, to_days: 10, price: 25)
+end
+
+def generate_coupons
+  Coupon.create(key: '12345')
+  Coupon.create(key: '22345')
+end
+
+generate_user
 generate_categories
 15.times { generate_book }
 15.times { generate_authors }
 generate_authors_books
+generate_delivery_methods
+generate_coupons

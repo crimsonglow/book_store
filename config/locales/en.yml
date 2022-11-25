@@ -6,7 +6,51 @@ en:
     error: Error
     price_book: "€%{price}"
     add_edit_article: 'Add/Edit Article'
-    upload_book_cover: Upload book cover
+    change_on_in_delivery: Change on in_delivery
+    change_on_delivered: Change on delivered
+    change_on_canceled: Change on canceled
+  header:
+    title: Bookstore
+    home: Home
+    shop: Shop
+    my_account: My account
+    log_out: Log out
+    log_in: Log in
+    sign_up: Sign up
+  home_page:
+    name_categories: Real-Life Responsive Web Design
+    text_about_projects: Smart front-end techniques and design patterns derived from real-life responsive projects
+    authors: Vitaly Friedman, Daniel Mall,Vitaly Friedman
+    buy_now: Buy Now
+    previous: Previous
+    next: Next
+    welcome:  Welcome to our amazing Bookstore!
+    about_books: We pore through hundreds of new books each month and select the five best we can find to share with our members.
+    get_started: Get Started
+    best_sellers: Best Sellers
+  categories:
+    title_catalog: Сatalog
+    filter_by_category: Filter by category
+    sort_by: Sort by
+    all_books: All books
+  cart:
+    current_price: "€%{price}"
+    title_cart: Cart
+    pruduct: Product
+    price: Price
+    quantity: Quantity
+    subtotal: SubTotal
+    enter_coupon_code: Enter Your Coupon Code
+    apply_coupon: Apply Coupon
+    order_summary: Order Summary
+    subtotal_order: "Subtotal:"
+    coupon: "Coupon:"
+    order_total: "Order Total:"
+    checkout: Checkout
+    empty_cart: Your cart is empty
+    back_to_store: Back to store
+    wrong_coupon: wrong coupon
+    used_coupon: you used coupon for this order
   sort_books:
     newest_first: 'Newest first'
     asc_price: 'Price: Low to hight'
@@ -34,3 +78,107 @@ en:
       title: Title
       review: Review
       post: Post
+  settings:
+    title: Settings
+    address: Address
+    prevacy: Privacy
+    billing_address: Billing Address
+    shippint_address: Shipping Address
+    email: Email
+    enter_email: Enter Email
+    password: Password
+    old_password: Old Password
+    new_password: New Password
+    confirm_password: Confirm Password
+    remove_account: Remove Account
+    understand_user_detele: I understand that all data will be lost
+    first_name: First Name
+    last_name: Last Name
+    address: Address
+    city: City
+    zip: Zip
+    country: Country
+    phone: Phone
+    account_deleted: Your account successfuly deleted
+    remove_account_submit: Please Remove My Account
+    save: Save
+  orders:
+    my_orders: My Orders
+    in_progress: In progress
+    in_delivery: In delivery
+    delivered: Delivered
+    canceled: Canceled
+    sort_by: Sort by
+    number: Number
+    status: Status
+    total: Total
+    in_progress: In Progress
+    completed_at: Completed at
+    there_is_no_orders: There is no orders with this status
+  checkout:
+    item_book_price: "€%{price}"
+    back_to_store: Back to Store
+    place_order: Place Order
+    method: Method
+    delivery_next_day: Delivery Next Day!
+    days: Days
+    period_days: 3 to 7 days
+    price: Price
+    five_dollars: €5.00
+    edit: edit
+    quantity: Quantity
+    subtotal: SubTotal
+    title: Checkout
+    billing_address: Billing Address
+    shippint_address: Shipping Address
+    all_fields_required: all fields are required
+    use_billing_address: Use Billing Address
+    save_and_continue: Save and Continue
+    delivery: "Delivery:"
+    thank_for_order: Thank You for your Order!
+    send_massage_email_in_complete: An order confirmation has been has been sent to %{email}
+    order_number_complete: Order %{number}
+    phone_complete: Phone %{phone}
+    book: Book
+    total: Total
+    shipments: Shipments
+    payment_information: Payment Information
+    delivery_title: Delivery
+    payment_title: Payment
+    confirm_title: Confirm
+    complete_title: Complete
+    address_title: Address
+    credit_card_title: Credit Card
+    card_number: Card Number
+    name_on_card: Name on Card
+    mm_yy: MM / YY
+    cvv: CVV
+    cvv_hint: "3-digit security code, usually found on the back of your card. American Express cards has 4-digit code, located on the front."
+    returning_customer: Returning Customer
+    login_with_password: Log In with Password
+    new_customer: New Customer
+    quick_registration: Quik Register
+    able_to_create_password_late: "You’ll be able to create password later"
+    enter_email: Enter Email
+    sign_up: Sing Up
+  validate:
+    consist_letters: Must write without special symbols
+    wrong_number: Wrong number
+    start_plus: Have to start with +
+    only_numbers: Must be only numbers
+    wrong_address: Must be write without special symbols
+    no_more_50: Max Length should be 50 characters
+    no_more_15: Max Length should be 15 characters
+    no_more_10: Max Length should be 10 characters
+  controllers:
+    deleted_account: Your account successfuly deleted
+    error_deleted_account: Your account was not deleted
+    wrong_password: Wrong password
+    changed_password: Successfuly changed password
+    wrong_coupon: wrong coupon
+    added_in_cart: Added in cart
+    deleted_from_cart: Successfuly delete book from cart
+    status_complete: complete
+    updated_email: Your email successfuly updated, confirm new mail 
+  devise_custom:
+    back_to_store: Back to store

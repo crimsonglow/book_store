@@ -82,18 +82,25 @@ group :test do
 end
 
 gem 'rails-i18n', '~> 7.0.0'
+
 gem 'devise'
+gem 'omniauth', '~> 1.6', '>= 1.6.1'
+gem 'omniauth-facebook', '~> 4.0'
 gem 'activeadmin'
+gem "activeadmin_addons", "~> 1.9"
 
 gem 'bootstrap-sass'
 gem 'haml-rails'
 gem 'jquery-rails'
+gem 'simple_form'
 
-gem 'omniauth', '~> 1.6', '>= 1.6.1'
-gem 'omniauth-facebook', '~> 4.0'
+gem 'aasm'
 gem 'pagy'
 gem 'rectify'
+gem 'bcrypt'
+gem 'draper'
 gem 'net-http'
+gem 'countries'
 
 gem 'shrine'
 gem 'mini_magick'
@@ -102,4 +109,3 @@ gem "image_processing", "~> 1.8"
 
 gem "pundit", "~> 2.2"
 
-gem "activeadmin_addons", "~> 1.9"

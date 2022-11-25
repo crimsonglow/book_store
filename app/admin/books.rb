@@ -34,7 +34,9 @@ ActiveAdmin.register Book do
       row :price do |book|
         I18n.t('admin.price_book', price: book.price)
       end
-      image_row :image
+      row :image do |book|
+        image_tag book.image_url
+      end
     end
   end
 
@@ -50,9 +52,10 @@ ActiveAdmin.register Book do
       f.input :depth
       f.input :material
       f.input :price
-
-
+      f.input :image, required: true, as: :file
     end
     actions
   end
 end
+
+

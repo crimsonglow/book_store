@@ -1,0 +1,30 @@
+- @cart_books.order(:id).each do |book|
+  %tr
+    %td
+      .general-img-wrap-table
+        .thumbnail.general-thumbnail
+          %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
+          .thumb-hover
+            .general-thumb-link-wrap
+              = link_to book_path(book), class: 'thumb-hover-link' do
+                %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
+    %td
+      %p.title
+        = link_to book.title, book_path(book)
+    %td
+      %span.font-16.in-gold-500
+        = "€#{book.price}"
+    %td
+      .input-group
+        = link_to line_item_path(minus: true, id: @cart_presenter.current_lineitem(book)), method: :PUT, class: 'input-link' do
+          %i.fa.fa-minus.line-heaght-40
+        %input.form-control.quantity-input{type: "text", value: "#{@cart_presenter.count_same_books(book)}"}
+        = link_to line_item_path(plus: true, id: @cart_presenter.current_lineitem(book)), method: :PUT, class: 'input-link' do
+          %i.fa.fa-plus.line-heaght-40
+    %td
+      %span.font-16.in-gold-500
+        = "€#{@cart_presenter.subtotal_prise_book(book)}"
+    %td
+      = form_tag line_item_path(book.id), method: :delete do
+        = button_tag(type: "submit", class: 'close general-cart-close', 'aria-label': "Close") do
+          %span{'aria-hidden': "true"} &times;
