@@ -1,0 +1,35 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-performance
+
+AllCops:
+  TargetRubyVersion: 2.7.2
+
+Layout/LineLength:
+  Max: 120
+
+Naming/VariableNumber:
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/BlockLength:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+FrozenStringLiteralComment:
+  Enabled: false
+
+RSpec/AnyInstance:
+  Enabled: false
+
+AllCops:
+  Exclude:
+    - 'node_modules/**/*'
+    - 'layout/**/*'
+    - 'db/migrate/**/*'
+    - 'db/seeds.rb'
+    - 'bin/bundle'
+    - 'config/**/*'

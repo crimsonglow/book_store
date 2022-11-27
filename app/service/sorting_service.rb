@@ -1,4 +1,4 @@
-class SortingService < ApplicationController
+class SortingService
   attr_reader :params, :books
 
   SORT_BOOKS = {

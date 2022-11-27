@@ -57,5 +57,3 @@ ActiveAdmin.register Book do
     actions
   end
 end
-
-

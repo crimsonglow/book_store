@@ -30,7 +30,7 @@ class CartUpdateService
   def update_column
     return false unless validate_quantity!
 
-    line_item.update_column(:quantity, change_quantity_item)
+    line_item.update(quantity: change_quantity_item)
   end
 
   def validate_quantity!

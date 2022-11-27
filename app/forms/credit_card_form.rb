@@ -2,7 +2,7 @@ class CreditCardForm
   include ActiveModel::Model
   include Virtus
 
-  VALIDATE_DATE= /\A^(0[1-9]|1[0-2])\/?([0-9]{2})$\z/.freeze
+  VALIDATE_DATE = %r{\A^(0[1-9]|1[0-2])/?([0-9]{2})$\z}.freeze
 
   attribute :number, String
   attribute :name, String
@@ -14,5 +14,6 @@ class CreditCardForm
   validates :number, numericality: { only_integer: true, message: I18n.t('validate.only_numbers') }
   validates :name, length: { maximum: 50 }
   validates :date, format: { with: VALIDATE_DATE, message: I18n.t('validate.mm_yy') }
-  validates :cvv, length: { minimum: 3, maximum: 4 }, numericality: { only_integer: true, message: I18n.t('validate.only_numbers') }
+  validates :cvv, length: { minimum: 3, maximum: 4 },
+                  numericality: { only_integer: true, message: I18n.t('validate.only_numbers') }
 end

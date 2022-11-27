@@ -17,10 +17,7 @@ class ConfirmService
   end
 
   def create_secret_key
-    current_order&.update(number: generate_order_secret_number)
-  end
-
-  def generate_order_secret_number
-    Array.new(LENGTH_SECRET_NUMBER) { [rand(RANGE_SECRET_NUMBER)] }.unshift(BEGIN_SECRET_NUMBER).join
+    secret_number = Array.new(LENGTH_SECRET_NUMBER) { [rand(RANGE_SECRET_NUMBER)] }.unshift(BEGIN_SECRET_NUMBER).join
+    current_order&.update(number: secret_number)
   end
 end

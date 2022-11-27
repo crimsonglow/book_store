@@ -45,6 +45,7 @@ en:
     order_summary: Order Summary
     subtotal_order: "Subtotal:"
     coupon: "Coupon:"
+    coupon_used: 'You used coupon for this order'
     order_total: "Order Total:"
     checkout: Checkout
     empty_cart: Your cart is empty

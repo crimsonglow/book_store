@@ -4,7 +4,6 @@ class AddressPresenter < Rectify::Presenter
   attribute :current_order
   attribute :billing_form
   attribute :shipping_form
-  CLASS_HAS_ERROR = 'has-error'.freeze
   STEP = :address
 
   def billing
@@ -15,15 +14,15 @@ class AddressPresenter < Rectify::Presenter
     shipping_form || AddressForm.new
   end
 
-  def add_class_error(type, form)
-    CLASS_HAS_ERROR unless form.errors[type].empty?
-  end
-
   def current_value(value, type, current_form)
     current_address = check_current_address(type)
     return current_address[value] if current_address
 
     current_form.attributes[value]
+  end
+
+  def add_class_error(type, form)
+    form.errors[type].empty?
   end
 
   def current_country(type)

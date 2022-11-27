@@ -20,8 +20,10 @@ class AddressForm
   attribute :order_id, Integer
 
   validates :first_name, :last_name, :address, :country, :city, :zip, :phone, :address_type, presence: true
-  validates :first_name, :last_name, :address, :country, :city, length: { maximum: 50, message: I18n.t('validate.no_more_50') }
-  validates :first_name, :last_name, :country, :city, format: { with: VALIDATE_CONSIST_LETTERS, message: I18n.t('validate.consist_letters') }
+  validates :first_name, :last_name, :address, :country, :city,
+            length: { maximum: 50, message: I18n.t('validate.no_more_50') }
+  validates :first_name, :last_name, :country, :city,
+            format: { with: VALIDATE_CONSIST_LETTERS, message: I18n.t('validate.consist_letters') }
   validates :zip, length: { maximum: 10, message: I18n.t('validate.no_more_10') }
   validates :zip, format: { with: VALIDATE_ZIP, message: I18n.t('validate.wrong_number') }
   validates :phone, length: { maximum: 15, message: I18n.t('validate.no_more_15') }

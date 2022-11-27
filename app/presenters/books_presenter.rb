@@ -15,8 +15,7 @@ class BooksPresenter < Rectify::Presenter
     all_books.last(COUNT_NEW_BOOKS)
   end
 
-  def top_books
-  end
+  def top_books; end
 
   def show_sort_type
     params[:sort_by] ? t("sort_books.#{params[:sort_by]}") : t('sort_books.newest_first')

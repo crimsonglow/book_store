@@ -1,6 +1,6 @@
 class AddressSettingsService < AddressBaseService
   def call
-    @form = params[:billing_form] ? @billing : @shipping
+    @form = params[:billing_form] ? billing : shipping
     return false unless @form.valid?
 
     create_or_update_address

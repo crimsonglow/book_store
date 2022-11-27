@@ -10,7 +10,7 @@ class BooksController < ApplicationController
   end
 
   def show
-    @current_book = Book.find_by(id: params[:id].to_i)
+    @current_book = Book.find_by(id: params[:id])
     @review_presenter = ReviewPresenter.new(current_book: @current_book)
     @current_book_presenter = CurrentBookPresenter.new(current_book: @current_book)
   end

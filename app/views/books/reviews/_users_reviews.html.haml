@@ -13,7 +13,7 @@
                 = review.created_at.to_date
               .max-300
                 .general-message-verified
-                  = @review_presenter.is_verified?(review)
+                  = @review_presenter.verified?(review)
                 .general-message-name
                   = review.user.email
             .mb-15

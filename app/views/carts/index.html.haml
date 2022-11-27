@@ -27,7 +27,7 @@
         .col-sm-4
           - if @cart_presenter.current_order && @cart_presenter.current_order.coupon
             %div.input-group.general-input-group
-              you used coupon for this order
+              = t('cart.coupon_used')
           - else
             = form_tag coupon_path(@cart_presenter.current_order), method: :put, class: 'input-group general-input-group' do
               %label.input-label

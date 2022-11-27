@@ -11,8 +11,4 @@ class PaymentPresenter < Rectify::Presenter
   def current_card
     current_order.credit_card
   end
-
-  def check_exists_errors(type)
-    'has-error' unless payment_card.errors[type].empty?
-  end
 end

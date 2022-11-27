@@ -8,7 +8,7 @@ class ReviewPresenter < Rectify::Presenter
     current_book.reviews
   end
 
-  def is_verified?(review)
+  def verified?(review)
     t('book_page.review.verified_reviewer') if review.is_verified
   end
 

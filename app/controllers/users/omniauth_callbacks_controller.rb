@@ -1,3 +1,4 @@
+# rubocop:disable Style/ClassAndModuleChildren
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   SIGN_IN_FACEBOOK = 'Facebook'.freeze
 
@@ -18,3 +19,4 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     redirect_to root_path
   end
 end
+# rubocop:enable Style/ClassAndModuleChildren

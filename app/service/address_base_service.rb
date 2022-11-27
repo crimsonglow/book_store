@@ -1,12 +1,18 @@
 class AddressBaseService
-  attr_reader :params, :current_user, :current_order, :billing, :shipping, :form
+  attr_reader :params, :current_user, :current_order, :form
 
   def initialize(params, current_user, current_order)
     @params = params
     @current_user = current_user
     @current_order = current_order
-    @billing = AddressForm.new(params[:billing_form])
-    @shipping = AddressForm.new(params[:shipping_form])
+  end
+
+  def billing
+    @billing ||= AddressForm.new(params[:billing_form])
+  end
+
+  def shipping
+    @shipping ||= AddressForm.new(params[:shipping_form])
   end
 
   def create_address

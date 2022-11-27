@@ -1,15 +1,16 @@
 class PaymentService
-  attr_reader :params, :current_order, :current_user, :form
+  attr_reader :params, :current_order, :current_user
 
   def initialize(params, current_user, current_order)
     @params = params
     @current_order = current_order
     @current_user = current_user
-    @form = CreditCardForm.new(params[:credit_card_form])
   end
 
   def call
-    create_or_update_card if form.valid?
+    return unless form.valid?
+
+    create_or_update_card
   end
 
   def create_or_update_card
@@ -22,6 +23,10 @@ class PaymentService
 
   def update_credit_card
     current_order.credit_card.update(form.attributes.without(:order_id))
+  end
+
+  def form
+    @form ||= CreditCardForm.new(params[:credit_card_form])
   end
 
   def presenter

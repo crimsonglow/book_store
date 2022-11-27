@@ -3,12 +3,11 @@ class ReviewsController < ApplicationController
     authorize :review, :create?
 
     review_service = ReviewService.new(reviews_form_params)
-    @review_form = review_service.review_form
 
     if review_service.save_review
       flash[:success] = t('book_page.review.success_add_comment')
     else
-      flash[:error] = @review_form.errors.full_messages.to_sentence
+      flash[:error] = review_service.reviews_errors
     end
     redirect_to book_path(params[:current_book])
   end

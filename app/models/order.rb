@@ -7,7 +7,7 @@ class Order < ApplicationRecord
   has_many :books, through: :line_items
   has_many :addresses, as: :resource, dependent: :destroy
   has_one :credit_card, dependent: :destroy
-  has_one :coupon
+  has_one :coupon, dependent: :nullify
 
   scope :in_progress, -> { Order.complete }
   scope :in_delivery, -> { Order.in_delivery }

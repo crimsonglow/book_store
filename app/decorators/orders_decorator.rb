@@ -14,6 +14,8 @@ class OrdersDecorator < Draper::CollectionDecorator
   end
 
   def current_status_order(params)
-    I18n.t("orders.#{params[:sort_order_by].to_sym}") if params[:sort_order_by] && OrderSortingService::SORT_BY.include?(params[:sort_order_by].to_sym)
+    return unless params[:sort_order_by] && OrderSortingService::SORT_BY.include?(params[:sort_order_by].to_sym)
+
+    I18n.t("orders.#{params[:sort_order_by].to_sym}")
   end
 end

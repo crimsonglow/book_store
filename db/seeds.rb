@@ -1,4 +1,7 @@
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+if Rails.env.development?
+  AdminUser.create!(email: 'admin@example.com', password: 'password',
+                    password_confirmation: 'password')
+end
 
 def generate_user
   User.create(email: FFaker::Internet.email, password: FFaker::Internet.password)
@@ -46,8 +49,8 @@ def generate_authors_books
 end
 
 def generate_delivery_methods
-  Delivery.create(method: 'Express Delivery', from_days: 1, to_days: 3, price: 35)
-  Delivery.create(method: 'Standart Delivery', from_days: 5, to_days: 10, price: 25)
+  Delivery.create(method: 'Express Delivery', from_days: 5, to_days: 10, price: 50)
+  Delivery.create(method: 'Standart Delivery', from_days: 10, to_days: 20, price: 25)
 end
 
 def generate_coupons

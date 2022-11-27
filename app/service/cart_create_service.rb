@@ -34,7 +34,7 @@ class CartCreateService
   def validate_form_fields!
     return if cart_form.valid?
 
-    fail UnsupportedFormFields
+    raise UnsupportedFormFields
   end
 
   def order
