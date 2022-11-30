@@ -28,6 +28,11 @@ en:
     about_books: We pore through hundreds of new books each month and select the five best we can find to share with our members.
     get_started: Get Started
     best_sellers: Best Sellers
+  footer:
+    home: Home
+    shop: Shop
+    orders: Orders
+    settings: Settings
   categories:
     title_catalog: Сatalog
     filter_by_category: Filter by category

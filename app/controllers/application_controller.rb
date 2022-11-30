@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :header_presenter
 
-  include Pundit
+  include Pundit::Authorization
 
   def header_presenter
     @header_presenter = HeaderPresenter.new(current_order: current_order)

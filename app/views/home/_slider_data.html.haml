@@ -18,7 +18,7 @@
                 - book.authors.each do |author|
                   = author.full_name
               .general-align
-                = link_to 'Buy Now', line_items_path(line_item: {current_book: book.id}), method: :post, class: 'btn btn-primary'
+                = link_to t('home_page.buy_now'), line_items_path(line_item: {current_book: book.id}), method: :post, class: 'btn btn-primary'
   %a.left.carousel-control{href: "#slider", role: "button", 'data-slide': "prev"}
     %span.icon-prev{'aria-hidden': "true"}
     %span.sr-only= t('home_page.previous')
