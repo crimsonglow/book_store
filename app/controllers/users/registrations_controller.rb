@@ -7,10 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController # rubocop
     return checkout_registrate_user if email_taken_in_quick_signup?
     return redirect_to(new_user_password_path, notice: EMAIL_EXISTS) if email_exists_in_quick_signup?
 
-    super do |resource|
-      resource.skip_confirmation!
-      resource.save
-    end
+    super
   end
 
   def checkout_registrate_user
