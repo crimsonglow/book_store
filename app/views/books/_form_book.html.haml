@@ -1,5 +1,4 @@
-= form_tag line_items_path, method: :post do
-  = hidden_field_tag 'current_book', @current_book.id
+= form_tag line_items_path(line_item: {current_book: @current_book.id}), method: :post do
   .col-xs-12.col-md-4
     %p.h1.in-gold-500.mt-10
       = @current_book.price

@@ -4,6 +4,6 @@ RSpec.describe HomeController, type: :controller do
   context 'when get to /' do
     before { get(:index) }
 
-    it { expect(response.status).to eq 200 }
+    it { is_expected.to respond_with(200) }
   end
 end

@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Home page', type: :feature do
   let!(:book) { FactoryBot.create(:book) }
+
   before { visit(root_path) }
 
   it 'loads home page' do
