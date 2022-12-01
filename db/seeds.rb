@@ -58,7 +58,6 @@ def generate_coupons
   Coupon.create(key: '22345')
 end
 
-generate_user
 generate_categories
 15.times { generate_book }
 15.times { generate_authors }
