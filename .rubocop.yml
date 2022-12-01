@@ -13,6 +13,10 @@ Naming/VariableNumber:
   Exclude:
     - 'spec/**/*'
 
+MultipleMemoizedHelpers:
+  Exclude:
+    - 'spec/**/*'
+
 Metrics/BlockLength:
   Enabled: false
 
@@ -33,3 +37,11 @@ AllCops:
     - 'db/seeds.rb'
     - 'bin/bundle'
     - 'config/**/*'
+
+RSpec/NamedSubject:
+  Exclude:
+    - 'spec/controllers/books_controller_spec.rb'
+
+Rails/FilePath:
+  Exclude:
+    - 'spec/rails_helper.rb'

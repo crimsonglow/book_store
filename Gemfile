@@ -52,6 +52,7 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'byebug'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'ffaker'
   gem 'pry', '~> 0.13'
   gem 'pry-byebug', '3.9.0'
   gem 'pry-rails'
@@ -79,7 +80,6 @@ group :test do
   gem 'capybara'
   gem 'capybara-screenshot'
   gem 'factory_bot_rails'
-  gem 'ffaker'
   gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
