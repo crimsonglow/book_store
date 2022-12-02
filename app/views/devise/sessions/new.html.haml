@@ -16,7 +16,7 @@
         %label.control-label.input-label{for: "password"}= t('devise.enter_password')
         = f.password_field :password, id: 'password', class: 'form-control', placeholder: "Password"
         %a.help-block.in-gold-500
-          = render "devise/shared/link_password"
+          = render "devise/shared/link_forgot_password"
       .form-group.checkbox.text-center.mb-30
         %label.checkbox-label
           %input.checkbox-input{type: "checkbox", hidden: "true"}
@@ -29,4 +29,4 @@
     %p.general-sign-text.text-center
       = t('devise.do_not_have_account')
       %a.in-gold-500
-        = render "devise/shared/links"
+        = render "devise/shared/link_sing_up"

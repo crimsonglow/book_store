@@ -21,7 +21,7 @@
             %label.control-label.input-label{for: "password"}= t('devise.enter_password')
             = f.password_field :password, id: 'password', class: 'form-control', placeholder: "Password"
             %a.help-block.in-gold-500
-              = render "devise/shared/link_password"
+              = render "devise/shared/link_forgot_password"
         %button.btn.btn-default.mb-20
           = f.submit t('checkout.login_with_password'), class: 'btn-submit-login-sign-up'
     .col-md-5.col-md-offset-1.mb-60
