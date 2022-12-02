@@ -1,0 +1,28 @@
+version: 2.1
+orbs:
+  ruby: circleci/ruby@1.8.0
+jobs:
+  rspec-test:
+    docker:
+      - image: cimg/ruby:2.7.2
+        environment:
+          POSTGRES_USER: book_store_admin
+          POSTGRES_PASSWORD: 12325897AQz
+          POSTGRES_DB: book_store_test
+          DATABASE_URL: "postgres://ubuntu@localhost:7413/book_store_test"
+    steps:
+      - checkout
+      - ruby/install-deps
+      - run:
+          name: Wait for Postgres to start
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Set up DB
+          command: bin/rails db:schema:load --trace
+      - run:
+          name: Run RSpec tests
+          command: bundle exec rspec
+workflows:
+    build:
+        jobs:
+            - rspec-test
