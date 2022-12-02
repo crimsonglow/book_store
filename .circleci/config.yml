@@ -1,17 +1,37 @@
 version: 2.1
 orbs:
-  node: circleci/node@5
+  browser-tools: circleci/browser-tools@1.2.3
 jobs:
-  install-node-example:
+  build:
     docker:
-      - image: 'cimg/base:stable'
+      - image: cimg/ruby:3.0-browsers
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+        environment:
+          RAILS_ENV: test
+      - image: cimg/postgres:14.0
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+        environment:
+          POSTGRES_USER: circleci-demo-ruby
+          POSTGRES_DB: rails_blog
+          POSTGRES_PASSWORD: ""
     steps:
       - checkout
-      - node/install:
-          install-yarn: true
-          node-version: '16.13'
-      - run: node --version
-workflows:
-  test_my_app:
-    jobs:
-      - install-node-example
+      - browser-tools/install-browser-tools
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Database setup
+          command: bin/rails db:schema:load --trace
+      - run:
+          name: Run Tests
+          command: bin/rails test
+      - store_artifacts:
+          path: coverage
