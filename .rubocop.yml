@@ -35,6 +35,7 @@ AllCops:
     - 'layout/**/*'
     - 'db/migrate/**/*'
     - 'db/seeds.rb'
+    - 'db/schema.rb'
     - 'bin/bundle'
     - 'config/**/*'
 
@@ -45,3 +46,8 @@ RSpec/NamedSubject:
 Rails/FilePath:
   Exclude:
     - 'spec/rails_helper.rb'
+
+RSpec/DescribedClass:
+  Exclude:
+    - 'spec/models/address_spec.rb'
+    - 'spec/models/review_spec.rb'

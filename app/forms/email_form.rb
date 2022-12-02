@@ -1,6 +1,6 @@
 class EmailForm
   include ActiveModel::Model
-  include Virtus
+  include Virtus.model
 
   attribute :email, String
   attribute :user_id, Integer

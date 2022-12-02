@@ -19,15 +19,11 @@ class CartDeleteService
   end
 
   def delete_order
-    [delete_coupon_from_order, current_order.destroy] if empty_order?
+    current_order.destroy if empty_order?
   end
 
   def delete_item
     current_order.line_items.find_by(book_id: params[:id]).delete
-  end
-
-  def delete_coupon_from_order
-    current_order.coupon&.update(order_id: nil)
   end
 
   def empty_order?

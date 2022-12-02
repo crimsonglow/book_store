@@ -1,6 +1,6 @@
 class AddressForm
+  include Virtus.model
   include ActiveModel::Model
-  include Virtus
 
   VALIDATE_CONSIST_LETTERS = /\A[a-z A-Z]+\z/.freeze
   VALIDATE_ZIP = /\A[0-9]+\z/.freeze

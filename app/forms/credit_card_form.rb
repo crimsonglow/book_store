@@ -1,6 +1,6 @@
 class CreditCardForm
   include ActiveModel::Model
-  include Virtus
+  include Virtus.model
 
   VALIDATE_DATE = %r{\A^(0[1-9]|1[0-2])/?([0-9]{2})$\z}.freeze
 

@@ -15,7 +15,7 @@ class SortingService
   end
 
   def call
-    sort_books
+    sort_books.includes([:authors])
   end
 
   def sort_books
