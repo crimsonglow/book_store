@@ -1,67 +1,57 @@
-executors:
-  ruby:
-    docker:
-      - image: 'circleci/ruby:2.7.2-node-browsers'
-  ruby_with_db:
-    docker:
-      - image: 'circleci/ruby:2.7.2-node-browsers'
-      - image: 'circleci/postgres:12.1-alpine-ram'
-    environment:
-      DATABASE_URL: 'postgres://postgres:postgres@127.0.0.1:5432'
-orbs:
-  rails: medpeer/rails@1.2.0
 version: 2.1
-description: Install gems with Bundler.
-parameters:
-  bundle_path:
-    default: vendor/bundle
-    description: The location to install gems.
-    type: string
-  key:
-    default: gems-v1
-    description: The cache key prefix.
-    type: string
-  restore_only:
-    default: false
-    description: Whether to skip bundle-install and save_cache steps.
-    type: boolean
-steps:
-  - restore_cache:
-      keys:
-        - >-
-          << parameters.key >>-{{ arch }}-{{ .Branch }}-{{ checksum
-          "Gemfile.lock" }}
-        - '<< parameters.key >>-{{ arch }}-{{ .Branch }}'
-        - >-
-          << parameters.key >>-{{ arch }}-{{ checksum
-          ".git/refs/remotes/origin/HEAD" }}
-        - '<< parameters.key >>-{{ arch }}'
-  - run: bundle config set path << parameters.bundle_path >>
-  - unless:
-      condition: <<parameters.restore_only>>
-      steps:
-        - run: bundle install --jobs=4 --clean
-        - save_cache:
-            key: >-
-              << parameters.key >>-{{ arch }}-{{ .Branch }}-{{ checksum
-              "Gemfile.lock" }}
-            paths:
-              - << parameters.bundle_path >>
+
+orbs:
+  ruby: circleci/ruby@1.1.0
+  node: circleci/node@2
+
+jobs:
+  build:
+    docker:
+      - image: cimg/ruby:2.7.2-node
+    steps:
+      - checkout
+      - ruby/install-deps
+      # Store bundle cache
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-key: "yarn.lock"
+  test:
+    parallelism: 3
+    docker:
+      - image: cimg/ruby:2.7.2-node
+      - image: circleci/postgres:9.5-alpine
+        environment:
+          POSTGRES_USER: circleci-demo-ruby
+          POSTGRES_DB: rails_blog_test
+          POSTGRES_PASSWORD: ""
+    environment:
+      BUNDLE_JOBS: "3"
+      BUNDLE_RETRY: "3"
+      PGHOST: 127.0.0.1
+      PGUSER: circleci-demo-ruby
+      PGPASSWORD: ""
+      RAILS_ENV: test
+    steps:
+      - checkout
+      - ruby/install-deps
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-key: "yarn.lock"
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Database setup
+          command: bundle exec rails db:schema:load --trace
+      # Run rspec in parallel
+      - ruby/rspec-test
+      - ruby/rubocop-check
+
 workflows:
-  rspec:
+  version: 2
+  build_and_test:
     jobs:
-      - rails/rb-deps:
-          executor: ruby
-      - rails/js-deps:
-          executor: ruby
-      - rails/assets:
-          executor: ruby
+      - build
+      - test:
           requires:
-            - rails/rb-deps
-            - rails/js-deps
-      - rails/rspec:
-          db-port: '5432'
-          executor: ruby_with_db
-          parallelism: 4
-          requires:
-            - rails/assets
+            - build
