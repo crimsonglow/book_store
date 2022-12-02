@@ -1,28 +1,61 @@
-version: 2.1
+version: '2.1'
 orbs:
-  ruby: circleci/ruby@1.8.0
+  ruby: circleci/ruby@2.0.0
+  node: circleci/node@2
 jobs:
-  rspec-test:
+  build:
     docker:
-      - image: cimg/ruby:2.7.2
-        environment:
-          POSTGRES_USER: book_store_admin
-          POSTGRES_PASSWORD: 12325897AQz
-          POSTGRES_DB: book_store_test
-          DATABASE_URL: "postgres://ubuntu@localhost:5432/book_store_test"
+      - image: 'cimg/ruby:2.7.2-node'
     steps:
       - checkout
       - ruby/install-deps
+      - node/install-packages:
+          cache-key: yarn.lock
+          pkg-manager: yarn
+  checking:
+    docker:
+      - image: 'cimg/ruby:2.7.2-node'
+    steps:
+      - checkout
+      - ruby/install-deps
+      - ruby/rubocop-check:
+          format: progress
+          label: Inspecting with Rubocop
+  test:
+    docker:
+      - image: 'cimg/ruby:2.7.2-node'
+      - environment:
+          POSTGRES_DB: book_store_test
+          POSTGRES_PASSWORD: 12325897AQz
+          POSTGRES_USER: book_store_admin
+        image: 'circleci/postgres:9.5-alpine'
+    environment:
+      BUNDLE_JOBS: '3'
+      BUNDLE_RETRY: '3'
+      PGHOST: 127.0.0.1
+      PGPASSWORD: 12325897AQz
+      PGUSER: book_store_admin
+      RAILS_ENV: test
+    parallelism: 3
+    steps:
+      - checkout
+      - ruby/install-deps
+      - node/install-packages:
+          cache-key: yarn.lock
+          pkg-manager: yarn
       - run:
-          name: Wait for Postgres to start
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+          command: 'dockerize -wait tcp://localhost:5432 -timeout 1m'
+          name: Wait for DB
       - run:
-          name: Set up DB
-          command: bin/rails db:schema:load --trace
-      - run:
-          name: Run RSpec tests
-          command: bundle exec rspec
+          command: 'bundle exec rails db:schema:load --trace'
+          name: Database setup
+      - ruby/rspec-test:
+          include: spec/**/*_spec.rb
 workflows:
-    build:
-        jobs:
-            - rspec-test
+  build_and_test:
+    jobs:
+      - build
+      - checking
+      - test:
+          requires:
+            - build
