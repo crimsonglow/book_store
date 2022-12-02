@@ -15,9 +15,9 @@ jobs:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
         environment:
-          POSTGRES_USER: circleci-demo-ruby
-          POSTGRES_DB: rails_blog
-          POSTGRES_PASSWORD: ""
+          POSTGRES_USER: book_store_admin
+          POSTGRES_DB: book_store_test
+          POSTGRES_PASSWORD: 12325897AQz
     steps:
       - checkout
       - browser-tools/install-browser-tools
