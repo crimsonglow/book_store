@@ -19,6 +19,8 @@ jobs:
           POSTGRES_DB: book_store_test
           POSTGRES_PASSWORD: 12325897AQz
     steps:
+      - checkout
+      - browser-tools/install-browser-tools
       - run:
           name: Bundle Install
           command: bundle check || bundle install
@@ -37,3 +39,5 @@ jobs:
                             --out /tmp/test-results/rspec.xml \
                             --format progress \
                             $TEST_FILES
+      - store_artifacts:
+          path: coverage
