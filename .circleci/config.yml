@@ -9,13 +9,13 @@ jobs:
           POSTGRES_USER: book_store_admin
           POSTGRES_PASSWORD: 12325897AQz
           POSTGRES_DB: book_store_test
-          DATABASE_URL: "postgres://ubuntu@localhost:7413/book_store_test"
+          DATABASE_URL: "postgres://ubuntu@localhost:5432/book_store_test"
     steps:
       - checkout
       - ruby/install-deps
       - run:
           name: Wait for Postgres to start
-          command: dockerize -wait tcp://localhost:7413 -timeout 1m
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
           name: Set up DB
           command: bin/rails db:schema:load --trace
