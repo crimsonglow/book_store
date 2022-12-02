@@ -9,8 +9,8 @@ class CreateAddresses < ActiveRecord::Migration[7.0]
       t.string :country
       t.string :phone
       t.integer :address_type
-      t.integer :resource_id, index: true
-      t.string :resource_type, index: true
+      t.bigint :resource_id, index: true, null: false
+      t.string :resource_type, index: true, null: false
 
       t.timestamps
     end

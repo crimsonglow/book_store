@@ -17,15 +17,15 @@ describe 'Sign up page', type: :feature do
 
     context 'when click with no data' do
       let(:email) { '' }
-      let(:password)  { '' }
-      let(:password_confirmation) {  }
+      let(:password) { '' }
+      let(:password_confirmation) { '' }
 
       include_examples 'returns expected result'
     end
 
     context 'when click no password data' do
       let(:email) { user[:email] }
-      let(:password)  { '' }
+      let(:password) { '' }
       let(:password_confirmation) { user[:password] }
 
       include_examples 'returns expected result'
@@ -52,7 +52,7 @@ describe 'Sign up page', type: :feature do
 
   context 'when all fields right' do
     let(:email) { user[:email] }
-    let(:password)  { user[:password] }
+    let(:password) { user[:password] }
     let(:password_confirmation) { user[:password] }
 
     before { fill_in_data_and_click_button(email, password, password_confirmation) }
@@ -65,12 +65,12 @@ describe 'Sign up page', type: :feature do
     expect(page).to have_content('Remember me')
   end
 
-private
+  private
 
   def fill_in_data_and_click_button(email, password, password_confirmation)
-    fill_in 'user[email]', with: "#{email}"
-    fill_in 'user[password]', with: "#{password}"
-    fill_in 'user[password_confirmation]', with: "#{password_confirmation}"
+    fill_in 'user[email]', with: email.to_s
+    fill_in 'user[password]', with: password.to_s
+    fill_in 'user[password_confirmation]', with: password_confirmation.to_s
 
     click_button(I18n.t('devise_custom.back_to_store'))
   end

@@ -1,6 +1,6 @@
 class ReviewForm
   include ActiveModel::Model
-  include Virtus
+  include Virtus.model
 
   attribute :title, String
   attribute :text_review, String

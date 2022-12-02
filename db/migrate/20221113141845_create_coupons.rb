@@ -4,7 +4,7 @@ class CreateCoupons < ActiveRecord::Migration[7.0]
       t.string :key
       t.decimal :discount, default: 10
 
-      t.belongs_to :order, foreign_key: true
+      t.belongs_to :order, foreign_key: { on_delete: :nullify }, null: true, unique: true
 
       t.timestamps
     end

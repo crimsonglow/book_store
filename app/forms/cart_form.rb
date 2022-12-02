@@ -1,6 +1,6 @@
 class CartForm
   include ActiveModel::Model
-  include Virtus
+  include Virtus.model
 
   attribute :current_book, Integer
 

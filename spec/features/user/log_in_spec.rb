@@ -9,21 +9,21 @@ describe 'Log in', type: :feature do
 
   describe 'when wrong attempts' do
     shared_examples 'returns expected result' do
-      before { fill_in_data_and_click_button(email, password ) }
+      before { fill_in_data_and_click_button(email, password) }
 
       it { expect(page).to have_content(error_massage) }
     end
 
     context 'when click with no data' do
       let(:email) { '' }
-      let(:password)  { '' }
+      let(:password) { '' }
 
       include_examples 'returns expected result'
     end
 
     context 'when click no password data' do
       let(:email) { user.email }
-      let(:password)  { '' }
+      let(:password) { '' }
 
       include_examples 'returns expected result'
     end
@@ -56,11 +56,11 @@ describe 'Log in', type: :feature do
     expect(page).to have_content('Confirm Password')
   end
 
-private
+  private
 
   def fill_in_data_and_click_button(email, password)
-    fill_in 'user[email]', with: "#{email}"
-    fill_in 'user[password]', with: "#{password}"
+    fill_in 'user[email]', with: email.to_s
+    fill_in 'user[password]', with: password.to_s
 
     click_button(I18n.t('devise_custom.back_to_store'))
   end

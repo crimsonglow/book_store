@@ -11,7 +11,7 @@ class CreateBooks < ActiveRecord::Migration[7.0]
       t.string :material
       t.decimal :price
 
-      t.belongs_to :category, foreign_key: true
+      t.belongs_to :category, foreign_key: true, null: false, unique: true
 
       t.timestamps
     end

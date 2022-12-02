@@ -12,7 +12,7 @@ class BooksPresenter < Rectify::Presenter
   end
 
   def new_books_slider
-    all_books.last(COUNT_NEW_BOOKS)
+    all_books.includes([:authors]).last(COUNT_NEW_BOOKS)
   end
 
   def top_books; end
