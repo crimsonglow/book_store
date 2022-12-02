@@ -4,13 +4,13 @@ orbs:
 jobs:
   build:
     docker:
-      - image: 'cimg/ruby:2.7-node'
+      - image: cimg/ruby:2.7.2
     steps:
       - checkout
       - ruby/install-deps
   checking:
     docker:
-      - image: 'cimg/ruby:2.7-node'
+      - image: cimg/ruby:2.7.2
     steps:
       - checkout
       - ruby/install-deps
@@ -19,7 +19,7 @@ jobs:
           label: Inspecting with Rubocop
   test:
     docker:
-      - image: 'cimg/ruby:2.7-node'
+      - image: cimg/ruby:2.7.2
       - environment:
           POSTGRES_DB: rails_blog_test
           POSTGRES_PASSWORD: ''
