@@ -19,7 +19,7 @@ class ChangePasswordService
   end
 
   def validate_password!
-    return if validate_old_password && validate_new_password && validate_confirm_password
+    return true if validate_old_password && validate_new_password && validate_confirm_password
 
     false
   end

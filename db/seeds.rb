@@ -5,7 +5,9 @@ end
 
 def generate_user
   User.create(email: FFaker::Internet.email, password: FFaker::Internet.password)
-  User.create(email: 'cyril_hackett@streich.us', password: 'password')
+  user = User.new(email: 'cyril_hackett@streich.us', password: 'password')
+  user.skip_confirmation!
+  user.save
 end
 
 def generate_categories
@@ -58,6 +60,7 @@ def generate_coupons
   Coupon.create(key: '22345')
 end
 
+generate_user
 generate_categories
 15.times { generate_book }
 15.times { generate_authors }
