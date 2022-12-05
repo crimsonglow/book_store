@@ -89,6 +89,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'site_prism'
+  gem 'warden'
   gem 'webdrivers'
 end
 

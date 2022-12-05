@@ -575,6 +575,7 @@ DEPENDENCIES
   sprockets-rails
   turbo-rails
   tzinfo-data
+  warden
   web-console
   webdrivers
 

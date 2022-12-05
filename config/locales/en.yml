@@ -185,6 +185,6 @@ en:
     added_in_cart: Added in cart
     deleted_from_cart: Successfuly delete book from cart
     status_complete: complete
-    updated_email: Your email successfuly updated, confirm new mail 
+    updated_email: Your email successfuly updated, confirm new mail
   devise_custom:
     back_to_store: Back to store
