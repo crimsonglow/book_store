@@ -55,4 +55,3 @@ RSpec/DescribedClass:
 RSpec/NamedSubject:
   Exclude:
     - 'spec/controllers/books_controller_spec.rb'
-
