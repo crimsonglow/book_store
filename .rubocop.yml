@@ -55,3 +55,11 @@ RSpec/DescribedClass:
 RSpec/NamedSubject:
   Exclude:
     - 'spec/controllers/books_controller_spec.rb'
+
+RSpec/ExampleLength:
+  Exclude:
+    - 'spec/features/settings/settings_spec.rb'
+
+RSpec/MultipleExpectations:
+  Exclude:
+    - 'spec/features/settings/settings_spec.rb'

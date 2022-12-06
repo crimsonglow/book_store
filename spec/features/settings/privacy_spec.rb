@@ -56,7 +56,7 @@ RSpec.describe 'Settings privacy page', type: :feature do
     end
   end
 
-  context 'delete account' do
+  context 'when delete account' do
     let(:remove_account_message) { I18n.t('settings.account_deleted') }
 
     it 'click on remove account' do
