@@ -15,4 +15,9 @@ FactoryBot.define do
 
     category
   end
+
+  factory :review do
+    title { FFaker::Lorem.word }
+    description { FFaker::Book.description(1) }
+  end
 end
