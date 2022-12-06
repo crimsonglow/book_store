@@ -37,6 +37,7 @@ RSpec.describe 'Settings page', type: :feature do
       expect(user.addresses.first.address_type).to eq(billing.address_type)
     end
   end
+
   context 'when shipping' do
     let(:shipping) { user.addresses.create(attributes_for(:address, :shipping)) }
 
@@ -66,7 +67,7 @@ RSpec.describe 'Settings page', type: :feature do
   end
 end
 
-def fill_in_valid_input(type)
+def fill_in_valid_input(type) # rubocop:disable Metrics/AbcSize:
   first("##{type}_first_name").set address[:first_name]
   first("##{type}_last_name").set address[:last_name]
   first("##{type}_address").set address[:address]
