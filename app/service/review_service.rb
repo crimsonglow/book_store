@@ -5,7 +5,7 @@ class ReviewService
     @reviews_form_params = reviews_form_params
   end
 
-  def save_review
+  def call
     return unless review_form.valid?
 
     create_review
