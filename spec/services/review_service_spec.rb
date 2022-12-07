@@ -11,7 +11,10 @@ RSpec.describe ReviewService do
     subject(:current_subject) { described_class.new(params) }
 
     context 'when success' do
-      let(:params) { { title: review_attr[:title], text_review: review_attr[:title], rating: 4, current_user: user.id, current_book: book.id } }
+      let(:params) do
+        { title: review_attr[:title], text_review: review_attr[:title], rating: 4, current_user: user.id,
+          current_book: book.id }
+      end
 
       before { current_subject.call }
 
