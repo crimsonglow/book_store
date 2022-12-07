@@ -33,7 +33,7 @@ RSpec.describe AccountsController, type: :controller do
 
   describe 'PUT #update' do
     let(:user) { create(:user) }
-    let(:custom_password) { attributes_for(:user) }
+    let(:custom_password) { attributes_for(:user, password: 'passwordAs1') }
     let(:update_password) { put :update, params: params }
 
     shared_examples 'returns expected result' do
