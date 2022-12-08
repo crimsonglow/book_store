@@ -6,7 +6,7 @@ RSpec.describe ReviewsController, type: :controller do
   let(:book) { create(:book) }
 
   describe 'POST #create' do
-    subject(:create_review) { put :create, params: params }
+    subject(:create_review) { post :create, params: params }
 
     login_user
 
