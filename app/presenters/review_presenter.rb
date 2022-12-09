@@ -5,7 +5,11 @@ class ReviewPresenter < Rectify::Presenter
   MIN_STARS = 1
 
   def all_reviews
-    current_book.reviews.includes([:user])
+    current_book.reviews.includes([:user]).order('created_at DESC')
+  end
+
+  def quantity_reviews
+    current_book.reviews.count
   end
 
   def verified?(review)

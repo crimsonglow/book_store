@@ -1,6 +1,9 @@
 .mb-80
   %h3.in-gold-500.mb-25
-    = t('book_page.review.reviews')
+    = t('book_page.review.reviews') 
+    (
+    = @review_presenter.quantity_reviews
+    )
   - @review_presenter.all_reviews.each do |review|
     - if review.approved?
       .general-message-wrap.divider-lg
