@@ -12,7 +12,7 @@ RSpec.describe ReviewsController, type: :controller do
 
     context 'when success' do
       let(:params) do
-        { title: review_attributes[:title], text_review: review_attributes[:description], current_user: user.id,
+        { title: review_attributes[:title], text_review: review_attributes[:text_review], current_user: user.id,
           current_book: book.id }
       end
 

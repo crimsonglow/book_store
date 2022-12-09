@@ -30,6 +30,7 @@ RSpec.configure do |config|
   config.include Devise::Test::IntegrationHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.extend ControllerMacros, type: :controller
+  config.extend FeatureMacros, type: :feature
 
   config.fixture_path = Rails.root.join('/spec/fixtures')
 

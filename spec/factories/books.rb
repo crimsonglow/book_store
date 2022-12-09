@@ -18,6 +18,9 @@ FactoryBot.define do
 
   factory :review do
     title { FFaker::Lorem.word }
-    description { FFaker::Book.description(1) }
+    text_review { FFaker::Lorem.word }
+
+    user
+    book
   end
 end
