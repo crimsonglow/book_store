@@ -5,8 +5,6 @@ RSpec.describe ReviewService do
   let(:book) { create(:book) }
   let(:review_attr) { attributes_for(:review) }
 
-  let(:count_comment_after_create) { 1 }
-
   describe 'create review' do
     subject(:current_subject) { described_class.new(params) }
 
