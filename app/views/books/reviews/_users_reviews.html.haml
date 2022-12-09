@@ -5,24 +5,23 @@
     = @review_presenter.quantity_reviews
     )
   - @review_presenter.all_reviews.each do |review|
-    - if review.approved?
-      .general-message-wrap.divider-lg
-        .clearfix
-          %span.img-circle.logo-size.inlide-block.pull-left.logo-empty
-            = review.user.email.first
-          .ml-70
-            %div
-              .general-message-date.hidden-xs
-                = review.created_at.to_date
-              .max-300
-                .general-message-verified
-                  = @review_presenter.verified?(review)
-                .general-message-name
-                  = review.user.email
-            .mb-15
-              - ReviewPresenter::COUNT_STARS.times do |star|
-                %i.fa.fa-star{class: @review_presenter.check_star(star, review)}
-            %h4
-              = review.title
-            %p
-              = review.text_review
+    .general-message-wrap.divider-lg
+      .clearfix
+        %span.img-circle.logo-size.inlide-block.pull-left.logo-empty
+          = review.user.email.first
+        .ml-70
+          %div
+            .general-message-date.hidden-xs
+              = review.created_at.to_date
+            .max-300
+              .general-message-verified.pull-right
+                = @review_presenter.verified?(review)
+              .general-message-name
+                = review.user.email
+          .mb-15
+            - ReviewPresenter::COUNT_STARS.times do |star|
+              %i.fa.fa-star{class: @review_presenter.check_star(star, review)}
+          %h4
+            = review.title
+          %p
+            = review.text_review
