@@ -29,4 +29,10 @@ RSpec.describe 'Review in book page', type: :feature do
     click_on(I18n.t('book_page.review.post'))
     expect(page).to have_content success_massage
   end
+
+  context 'when the user is not logged in' do
+    before { logout }
+
+    it { expect(page).not_to have_content(I18n.t('book_page.review.post')) }
+  end
 end
