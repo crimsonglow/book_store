@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe 'Admin reviews page', type: :feature do
+RSpec.describe 'Admin book page', type: :feature do
   let!(:book) { create(:book) }
 
   login_admin
 
-  context 'when visit reviews page' do
+  context 'when visit book page' do
     before { visit 'admin/books' }
 
     it { expect(page).to have_content book.title }
