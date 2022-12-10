@@ -24,13 +24,13 @@ ActiveAdmin.register Review, as: 'BookReview' do
 
   batch_action I18n.t('admin.approve'), if: proc { @current_scope.scope_method == :unprocessed } do |ids|
     reviews = Review.unprocessed.where(id: ids)
-    reviews.any? ? reviews.each(&:approved!) : flash[:error] = I18n.t('admin.error')
+    reviews.any? ? verify(reviews, 'approved!') : flash[:error] = I18n.t('admin.error')
     redirect_to(admin_book_reviews_path)
   end
 
   batch_action I18n.t('admin.reject'), if: proc { @current_scope.scope_method == :unprocessed } do |ids|
     reviews = Review.unprocessed.where(id: ids)
-    reviews.any? ? reviews.each(&:rejected!) : flash[:error] = I18n.t('admin.error')
+    reviews.any? ? verify(reviews, 'rejected!') : flash[:error] = I18n.t('admin.error')
     redirect_to(admin_book_reviews_path)
   end
 
@@ -38,5 +38,13 @@ ActiveAdmin.register Review, as: 'BookReview' do
     reviews = Review.where(id: ids)
     reviews.any? ? reviews.destroy_all : flash[:error] = I18n.t('admin.error')
     redirect_to(admin_book_reviews_path)
+  end
+end
+
+def verify(reviews, status)
+  reviews.each do |review|
+    review.public_send(status)
+    review.is_verified = true
+    review.save
   end
 end

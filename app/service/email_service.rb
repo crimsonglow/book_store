@@ -7,7 +7,13 @@ class EmailService
   end
 
   def save
-    update_email if email_form.valid?
+    return unless email_form.valid?
+
+    update_email
+  end
+
+  def email_errors
+    email_form.errors.full_messages.to_sentence
   end
 
   def update_email

@@ -15,4 +15,12 @@ FactoryBot.define do
 
     category
   end
+
+  factory :review do
+    title { FFaker::Lorem.word }
+    text_review { FFaker::Lorem.word }
+
+    user
+    book
+  end
 end

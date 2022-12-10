@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   end
   resources :line_items
   resources :orders
-  resources :addresses
   resources :reviews
   resources :settings
   resources :settings_emails

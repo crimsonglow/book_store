@@ -24,8 +24,8 @@
   %span.color-red= address_form.errors[:city].join(', ')
 
 .form-group{class: "#{@presenter.add_class_error(:zip, address_form)}"}
-  %label.control-label.input-label{for: "zip"}= t('settings.zip')
-  = f.text_field :zip, id: 'zip', class: 'form-control', placeholder: "Zip", value: @presenter.current_value(:zip, address_type, address_form)
+  %label.control-label.input-label= t('settings.zip')
+  = f.text_field :zip, class: 'form-control', placeholder: "Zip", value: @presenter.current_value(:zip, address_type, address_form)
   %span.color-red= address_form.errors[:zip].join(', ')
 
 .form-group.input-select-country
