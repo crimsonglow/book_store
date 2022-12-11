@@ -15,7 +15,13 @@ class CurrentBookPresenter < Rectify::Presenter
     current_book.description
   end
 
-  def img; end
+  def main_image
+    image_tag current_book.book_images.main.first.image_url(:large)
+  end
+
+  def additional_image
+    current_book.book_images.additional.map { |img| img.image_url(:small) }
+  end
 
   def show_description
     current_book.description[0..VISIBLE_LENGTH_DESCRIPTION_BOOK]

@@ -4,7 +4,6 @@ if Rails.env.development?
 end
 
 def generate_user
-  User.create(email: FFaker::Internet.email, password: FFaker::Internet.password)
   user = User.new(email: 'cyril_hackett@streich.us', password: 'password')
   user.skip_confirmation!
   user.save
@@ -17,7 +16,7 @@ def generate_categories
 end
 
 def generate_book
-  book = Book.new(
+  book = Book.create(
     title: FFaker::Book.title,
     description: FFaker::Book.description(5),
     price: rand(10...99.99).round(2),
@@ -28,8 +27,20 @@ def generate_book
     depth: 5.0,
     material: 'Hardcove, glossy paper'
   )
+end
 
-  book.save!
+def generate_image_book
+  Book.all.each do |book|
+    image = BookImage.new(book_id: book.id)
+    File.open("app/assets/img/#{rand(1...15)}.jpg") { |img| image.image = img }
+    image.save
+    3.times do
+      image = BookImage.new(book_id: book.id)
+      File.open("app/assets/img/#{rand(1...15)}.jpg") { |img| image.image = img }
+      image.image_type = 'additional'
+      image.save
+    end
+  end
 end
 
 def generate_authors
@@ -67,3 +78,4 @@ generate_categories
 generate_authors_books
 generate_delivery_methods
 generate_coupons
+generate_image_book

@@ -3,7 +3,6 @@ class CreateBooks < ActiveRecord::Migration[7.0]
     create_table :books do |t|
       t.string :title
       t.text :description
-      t.string :photo
       t.integer :published_year
       t.float :heigth
       t.float :width
