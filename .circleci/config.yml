@@ -21,6 +21,10 @@ jobs:
     steps:
       - checkout
       - browser-tools/install-browser-tools
+
+      - run: 
+          name: imagemagick
+          command: sudo apt install imagemagick
       - run:
           name: Bundle Install
           command: bundle check || bundle install
