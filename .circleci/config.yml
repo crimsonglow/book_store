@@ -30,6 +30,9 @@ jobs:
       - run:
           name: Database setup
           command: bin/rails db:schema:load --trace
+      - run: 
+          name: imagemagick
+          command: install imagemagick
       - run:
           name: Run Tests
           command: |
