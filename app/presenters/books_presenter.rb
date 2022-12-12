@@ -15,11 +15,11 @@ class BooksPresenter < Rectify::Presenter
     all_books.includes([:authors]).last(COUNT_NEW_BOOKS)
   end
 
-  def main_image_or_default(book, size)
+  def main_image_or_default(book)
     call_association = book.book_images.main
     default_image = BookImage.new.image_url
 
-    call_association.present? ? call_association.first.image_url(size.to_sym) : default_image
+    call_association.present? ? call_association.first.image_url : default_image
   end
 
   def top_books; end

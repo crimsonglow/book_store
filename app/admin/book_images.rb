@@ -5,7 +5,7 @@ ActiveAdmin.register BookImage do
     selectable_column
 
     column :image do |img|
-      image_tag img.image_url(:small)
+      img.image_url
     end
 
     column :book do |img|
@@ -23,7 +23,7 @@ ActiveAdmin.register BookImage do
       end
 
       row :image do |img|
-        image_tag img.image_url(:small)
+        image_tag img.image_url
       end
       row :image_type
     end

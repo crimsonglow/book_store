@@ -63,3 +63,7 @@ RSpec/ExampleLength:
 RSpec/MultipleExpectations:
   Exclude:
     - 'spec/features/settings/settings_spec.rb'
+
+Style/SymbolProc:
+  Exclude:
+    - 'app/admin/book_images.rb'

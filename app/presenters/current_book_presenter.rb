@@ -19,11 +19,11 @@ class CurrentBookPresenter < Rectify::Presenter
     call_association = current_book.book_images.main
     default_image = '/default.png'
 
-    call_association.present? ? call_association.first.image_url(:large) : default_image
+    call_association.present? ? call_association.first.image_url : default_image
   end
 
   def additional_image
-    current_book.book_images.additional.map { |img| img.image_url(:small) }
+    current_book.book_images.additional.map(&:image_url)
   end
 
   def show_description

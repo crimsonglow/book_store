@@ -446,6 +446,9 @@ GEM
     shrine (3.4.0)
       content_disposition (~> 1.0)
       down (~> 5.1)
+    shrine-memory (0.1.0)
+      down
+      shrine
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -569,6 +572,7 @@ DEPENDENCIES
   selenium-webdriver
   shoulda-matchers
   shrine
+  shrine-memory
   simple_form
   simplecov
   site_prism

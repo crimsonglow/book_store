@@ -87,6 +87,7 @@ group :test do
   gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
+  gem 'shrine-memory'
   gem 'simplecov', require: false
   gem 'site_prism'
   gem 'warden'
