@@ -1,6 +1,6 @@
 class BookImage < ApplicationRecord
   include ImageUploader::Attachment(:image)
-  before_validation :image_derivatives, on: :create
+  before_save :image_derivatives
   enum image_type: { main: 0, additional: 1 }
 
   belongs_to :book, optional: true
