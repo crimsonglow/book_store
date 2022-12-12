@@ -29,7 +29,7 @@ ActiveAdmin.register BookImage do
     end
   end
 
- form(html: { multipart: true }) do |f|
+  form(html: { multipart: true }) do |f|
     f.inputs I18n.t('admin.add_edit_article') do
       f.input :book
       f.input :image, required: true, as: :file

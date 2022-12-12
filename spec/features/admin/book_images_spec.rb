@@ -10,6 +10,7 @@ RSpec.describe 'Admin book images page', type: :feature do
     before { visit 'admin/book_images' }
 
     it { expect(page).to have_content book.title }
+    it { expect(page).to have_content img.image_type }
     it { expect(page).to have_content 'Book Images' }
   end
 end
