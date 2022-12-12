@@ -19,6 +19,5 @@ RSpec.describe Book, type: :model do
     it { is_expected.to have_db_column(:material).of_type(:string) }
     it { is_expected.to have_db_column(:price).of_type(:decimal) }
     it { is_expected.to have_db_index(:category_id) }
-    it { is_expected.to have_db_column(:image_data).of_type(:text) }
   end
 end

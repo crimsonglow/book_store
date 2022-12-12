@@ -16,6 +16,7 @@ else
   }
 end
 
+Shrine.plugin :default_url
 Shrine.plugin :derivatives
 Shrine.plugin :activerecord
 Shrine.plugin :cached_attachment_data # for retaining the cached file across form redisplays

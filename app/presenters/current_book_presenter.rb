@@ -15,8 +15,11 @@ class CurrentBookPresenter < Rectify::Presenter
     current_book.description
   end
 
-  def main_image
-    image_tag current_book.book_images.main.first.image_url(:large)
+  def main_image_or_default
+    call_association = current_book.book_images.main
+    default_image = BookImage.new.image_url
+
+    call_association.present? ? call_association.first.image_url(:large) : default_image
   end
 
   def additional_image

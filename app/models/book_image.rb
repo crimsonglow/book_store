@@ -10,6 +10,7 @@ class BookImage < ApplicationRecord
   private
 
   def main_image
+    return unless book
     return unless book.book_images.main.present? && image_type == 'main'
 
     errors.add :image_type, I18n.t('validate.main_image')

@@ -12,4 +12,8 @@ class ImageUploader < Shrine
       small: magick.resize_to_fit!(88, nil)
     }
   end
+
+  Attacher.default_url do
+    '/default.png'
+  end
 end
