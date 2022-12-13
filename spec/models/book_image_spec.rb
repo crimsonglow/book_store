@@ -8,7 +8,6 @@ RSpec.describe BookImage, type: :model do
   context 'with database columns' do
     it { is_expected.to have_db_column(:image_type).of_type(:integer).with_options(default: 'main') }
     it { is_expected.to have_db_column(:image_data).of_type(:text) }
-    it { is_expected.to validate_uniqueness_of(:image_data) }
   end
 
   context 'with enum types' do

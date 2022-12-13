@@ -4,7 +4,6 @@ class BookImage < ApplicationRecord
 
   belongs_to :book, optional: true
 
-  validates :image_data, uniqueness: true
   validate :main_image
 
   private

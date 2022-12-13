@@ -51,6 +51,7 @@ RSpec/DescribedClass:
   Exclude:
     - 'spec/models/address_spec.rb'
     - 'spec/models/review_spec.rb'
+    - 'spec/models/book_image_spec.rb'
 
 RSpec/NamedSubject:
   Exclude:
