@@ -67,3 +67,7 @@ RSpec/MultipleExpectations:
 Style/SymbolProc:
   Exclude:
     - 'app/admin/book_images.rb'
+
+RSpec/LetSetup:
+  Exclude:
+    - 'spec/controllers/carts_controller_spec.rb'

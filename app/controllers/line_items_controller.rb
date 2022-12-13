@@ -15,7 +15,7 @@ class LineItemsController < ApplicationController
   end
 
   def destroy
-    service = CartDeleteService.call(current_order, params)
+    service = CartDeleteService.call(params, current_order)
     cookies.delete(:current_order_id) if service[:delete_order?]
     redirect_message(I18n.t('controllers.deleted_from_cart'), :success)
   end
