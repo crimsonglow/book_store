@@ -66,6 +66,7 @@ RSpec/MultipleExpectations:
     - 'spec/features/settings/settings_spec.rb'
     - 'spec/features/carts/cart_page_spec.rb'
     - 'spec/features/carts/cart_page_js_spec.rb'
+    - 'spec/features/checkout/quick_registrate_page_spec.rb'
 
 Style/SymbolProc:
   Exclude:
@@ -75,4 +76,4 @@ RSpec/LetSetup:
   Exclude:
     - 'spec/controllers/carts_controller_spec.rb'
     - 'spec/features/carts/cart_page_js_spec.rb'
-
+    - 'spec/features/checkout/quick_registrate_page_spec.rb'

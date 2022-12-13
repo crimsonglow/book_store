@@ -4,7 +4,7 @@ if Rails.env.development?
 end
 
 def generate_user
-  user = User.new(email: 'cyril_hackett@streich.us', password: 'password')
+  user = User.new(email: 'cyril_hackett@streich.us', password: 'A1password')
   user.skip_confirmation!
   user.save
 end
