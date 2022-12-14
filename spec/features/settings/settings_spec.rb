@@ -32,7 +32,7 @@ RSpec.describe 'Settings page', type: :feature do
     end
 
     it 'valid input' do
-      fill_in_valid_input('billing_form')
+      fill_in_valid_input_for_setting('billing_form')
       first('input[type=submit]').click
       expect(user.addresses.first.address_type).to eq(billing.address_type)
     end
@@ -60,14 +60,14 @@ RSpec.describe 'Settings page', type: :feature do
     end
 
     it 'valid input' do
-      fill_in_valid_input('shipping_form')
+      fill_in_valid_input_for_setting('shipping_form')
       all('input[type=submit]')[1].click
       expect(user.addresses.first.address_type).to eq(shipping.address_type)
     end
   end
 end
 
-def fill_in_valid_input(type) # rubocop:disable Metrics/AbcSize:
+def fill_in_valid_input_for_setting(type) # rubocop:disable Metrics/AbcSize:
   first("##{type}_first_name").set address[:first_name]
   first("##{type}_last_name").set address[:last_name]
   first("##{type}_address").set address[:address]

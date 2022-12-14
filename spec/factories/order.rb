@@ -1,6 +1,11 @@
 FactoryBot.define do
   factory :order do
     user
+    number do
+      Array.new(ConfirmService::LENGTH_SECRET_NUMBER) do
+        [rand(ConfirmService::RANGE_SECRET_NUMBER)]
+      end.unshift(ConfirmService::BEGIN_SECRET_NUMBER).join
+    end
 
     after(:create) do |order|
       create(:line_item, order_id: order.id)
@@ -19,7 +24,32 @@ FactoryBot.define do
     end
 
     trait :payment_step do
+      after(:create) do |order|
+        order.addresses.create!(attributes_for(:address, :billing))
+        order.addresses.create!(attributes_for(:address, :shipping))
+      end
+
       status { 'payment' }
+    end
+
+    trait :confirm_step do
+      after(:create) do |order|
+        order.addresses.create!(attributes_for(:address, :billing))
+        order.addresses.create!(attributes_for(:address, :shipping))
+        create(:credit_card, order_id: order.id)
+      end
+
+      status { 'confirm' }
+    end
+
+    trait :complete_step do
+      after(:create) do |order|
+        order.addresses.create!(attributes_for(:address, :billing))
+        order.addresses.create!(attributes_for(:address, :shipping))
+        create(:credit_card, order_id: order.id)
+      end
+
+      status { 'complete' }
     end
   end
 end
