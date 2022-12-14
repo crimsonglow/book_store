@@ -4,7 +4,7 @@ class CreditCardForm
 
   VALIDATE_DATE = %r{\A^(0[1-9]|1[0-2])/?([0-9]{2})$\z}.freeze
 
-  attribute :number, String
+  attribute :number, Integer
   attribute :name, String
   attribute :date, String
   attribute :cvv, Integer
