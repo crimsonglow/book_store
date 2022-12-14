@@ -6,6 +6,10 @@ class ConfirmPresenter < Rectify::Presenter
   COUNT_NUMS_CARD_SHOW = 4
   STEP = :confirm
 
+  def main_image_or_default(item)
+    BookImageQuery.new.main_image_or_default(item.book)
+  end
+
   def lash_four_nums_card
     current_order.credit_card.number.chars.last(COUNT_NUMS_CARD_SHOW).join
   end

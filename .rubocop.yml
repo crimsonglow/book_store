@@ -60,6 +60,7 @@ RSpec/NamedSubject:
 RSpec/ExampleLength:
   Exclude:
     - 'spec/features/settings/settings_spec.rb'
+    - 'spec/features/checkout/step_addresses_spec.rb'
 
 RSpec/MultipleExpectations:
   Exclude:
@@ -79,3 +80,7 @@ RSpec/LetSetup:
 RSpec/SubjectStub:
   Exclude:
     - 'spec/**/*'
+
+RSpec/RepeatedDescription:
+  Exclude:
+    - 'spec/features/checkout/step_payment_spec.rb'

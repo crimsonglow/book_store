@@ -16,10 +16,7 @@ class BooksPresenter < Rectify::Presenter
   end
 
   def main_image_or_default(book)
-    call_association = book.book_images.main
-    default_image = BookImage.new.image_url
-
-    call_association.present? ? call_association.first.image_url : default_image
+    BookImageQuery.new.main_image_or_default(book)
   end
 
   def top_books; end

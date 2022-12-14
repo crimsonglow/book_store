@@ -116,4 +116,3 @@ RSpec.describe 'Checkout address step', :js, type: :feature do
     first("##{type}_phone").set address[:phone]
   end
 end
-
