@@ -51,5 +51,17 @@ FactoryBot.define do
 
       status { 'complete' }
     end
+
+    trait :in_delivery do
+      status { Order.statuses[:in_delivery] }
+    end
+
+    trait :delivered do
+      status { Order.statuses[:delivered] }
+    end
+
+    trait :canceled do
+      status { Order.statuses[:canceled] }
+    end
   end
 end
