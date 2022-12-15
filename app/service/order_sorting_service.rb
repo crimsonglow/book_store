@@ -20,7 +20,7 @@ class OrderSortingService
   end
 
   def order_by(by)
-    order = Order.where(user_id: current_user.id, status: by).includes([:coupon, :delivery])
+    order = Order.where(user_id: current_user.id, status: by).includes(%i[coupon delivery])
     OrderDecorator.decorate_collection(order)
   end
 end
