@@ -1,4 +1,4 @@
-class CartPresenter < Rectify::Presenter
+class CartPresenter < ApplicationPresenter
   attribute :current_order
   START_PRICE = 0
 

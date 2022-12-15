@@ -33,7 +33,7 @@
     - @presenter.current_order.line_items.each do |item|
       .general-cart-item.divider-lg
         .general-img-wrap-table
-          %img.cart-img-shadow{src: @presenter.main_image_or_default(item), alt: "design-book"}
+          %img.cart-img-shadow{src: @presenter.main_image_or_default(item.book), alt: "design-book"}
         %p.title
           = item.book.title
         %P.in-grey-600.fw-300
@@ -82,7 +82,7 @@
           %tr
             %td
               .general-img-wrap-table
-                %img.cart-img-shadow{src: @presenter.main_image_or_default(item), alt: "design-book"}
+                %img.cart-img-shadow{src: @presenter.main_image_or_default(item.book), alt: "design-book"}
             %td
               %p.title
                 = item.book.title

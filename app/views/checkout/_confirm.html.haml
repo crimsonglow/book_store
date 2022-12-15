@@ -51,7 +51,7 @@
           %tr
             %td
               .general-img-wrap-table
-                %img.cart-img-shadow.pull-left{src: @presenter.main_image_or_default(item), alt: "design-book"}
+                %img.cart-img-shadow.pull-left{src: @presenter.main_image_or_default(item.book), alt: "design-book"}
             %td
               %p.title
                 = item.book.title

@@ -1,4 +1,4 @@
-class BooksPresenter < Rectify::Presenter
+class BooksPresenter < ApplicationPresenter
   attribute :params
 
   COUNT_NEW_BOOKS = 3
@@ -13,10 +13,6 @@ class BooksPresenter < Rectify::Presenter
 
   def new_books_slider
     all_books.includes([:authors]).last(COUNT_NEW_BOOKS)
-  end
-
-  def main_image_or_default(book)
-    BookImageQuery.new.main_image_or_default(book)
   end
 
   def top_books; end

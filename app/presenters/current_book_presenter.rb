@@ -1,4 +1,4 @@
-class CurrentBookPresenter < Rectify::Presenter
+class CurrentBookPresenter < ApplicationPresenter
   attribute :current_book, Book
 
   VISIBLE_LENGTH_DESCRIPTION_BOOK = 250
@@ -13,14 +13,6 @@ class CurrentBookPresenter < Rectify::Presenter
 
   def show_all_description_text
     current_book.description
-  end
-
-  def main_image_or_default
-    BookImageQuery.new.main_image_or_default(current_book)
-  end
-
-  def additional_image
-    BookImageQuery.new.additional_image(current_book)
   end
 
   def show_description

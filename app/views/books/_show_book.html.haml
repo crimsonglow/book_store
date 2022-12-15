@@ -2,9 +2,9 @@
   .col-sm-6
     .product-gallery
       .mb-20
-        = image_tag @current_book_presenter.main_image_or_default
+        = image_tag @current_book_presenter.main_image_or_default(@current_book)
       .images.clearfix
-        - @current_book_presenter.additional_image.each do |book_image|
+        - @current_book_presenter.additional_image(@current_book).each do |book_image|
           %a.img-link
             = image_tag book_image
   .col-sm-6

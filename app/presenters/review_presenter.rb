@@ -1,4 +1,4 @@
-class ReviewPresenter < Rectify::Presenter
+class ReviewPresenter < ApplicationPresenter
   attribute :current_book, Book
 
   COUNT_STARS = 5
