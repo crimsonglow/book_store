@@ -15,13 +15,11 @@ class BooksPresenter < ApplicationPresenter
     all_books.includes([:authors]).last(COUNT_NEW_BOOKS)
   end
 
-  def top_books; end
+  def top_books_each_category
+    TopBooksQuery.new.call.includes([:authors])
+  end
 
   def show_sort_type
     params[:sort_by] ? t("sort_books.#{params[:sort_by]}") : t('sort_books.newest_first')
-  end
-
-  def show_img
-    image_tag book.image_url
   end
 end

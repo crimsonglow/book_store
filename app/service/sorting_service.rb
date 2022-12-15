@@ -3,6 +3,7 @@ class SortingService
 
   SORT_BOOKS = {
     newest_first: ->(instance) { instance.order_by('id DESC') },
+    popular_first: nil,
     asc_price: ->(instance) { instance.order_by('price ASC') },
     desc_price: ->(instance) { instance.order_by('price DESC') },
     asc_title: ->(instance) { instance.order_by('title ASC') },
@@ -19,9 +20,15 @@ class SortingService
   end
 
   def sort_books
-    params[:sort_by] = :newest_first unless SORT_BOOKS.include?(params[:sort_by]&.to_sym)
+    return order_by_category_popular_first if params[:sort_by] == 'popular_first'
 
+    params[:sort_by] = :newest_first unless SORT_BOOKS.include?(params[:sort_by]&.to_sym)
     SORT_BOOKS[params[:sort_by].to_sym].call(self)
+  end
+
+  def order_by_category_popular_first
+    category_id = params[:category_id] || Category.all.map(&:id).join(',')
+    TopBooksQuery.new.call(category_id: category_id)
   end
 
   def order_by(by)
