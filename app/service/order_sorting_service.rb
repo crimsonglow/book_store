@@ -14,12 +14,13 @@ class OrderSortingService
   end
 
   def call
-    return SORT_BY[:in_progress].call(self) unless params[:sort_order_by]
+    params[:sort_order_by] = :in_progress unless SORT_BY.include?(params[:sort_order_by]&.to_sym)
 
     SORT_BY[params[:sort_order_by].to_sym].call(self)
   end
 
   def order_by(by)
-    OrderDecorator.decorate_collection(Order.where(user_id: current_user.id, status: by))
+    order = Order.where(user_id: current_user.id, status: by).includes([:coupon, :delivery])
+    OrderDecorator.decorate_collection(order)
   end
 end
