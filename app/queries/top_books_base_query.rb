@@ -1,7 +1,7 @@
 class TopBooksBaseQuery
   def select_books(books, action)
-    books.joins("JOIN (#{action}) subquery ON subquery.book_id = books.id" )
-      .order('subquery.quantity DESC, books.id desc')
+    books.joins("JOIN (#{action}) subquery ON subquery.book_id = books.id")
+         .order('subquery.quantity DESC, books.id desc')
   end
 
   def request_tob_book_from_each_category
