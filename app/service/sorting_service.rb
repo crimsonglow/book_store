@@ -20,15 +20,14 @@ class SortingService
   end
 
   def sort_books
-    return order_by_category_popular_first if params[:sort_by] == 'popular_first'
+    return order_by_books_by_category if params[:sort_by] == 'popular_first'
 
     params[:sort_by] = :newest_first unless SORT_BOOKS.include?(params[:sort_by]&.to_sym)
     SORT_BOOKS[params[:sort_by].to_sym].call(self)
   end
 
-  def order_by_category_popular_first
-    category_id = params[:category_id] || Category.all.map(&:id).join(',')
-    TopBooksQuery.new.call(category_id: category_id)
+  def order_by_books_by_category
+    TopBooksByCategoryQuery.new.call(select_books_by_category)
   end
 
   def order_by(by)

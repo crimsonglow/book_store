@@ -16,7 +16,7 @@ class BooksPresenter < ApplicationPresenter
   end
 
   def top_books_each_category
-    TopBooksQuery.new.call.includes([:authors])
+    TopBookByEachCategoryQuery.new.call.includes([:authors])
   end
 
   def show_sort_type
