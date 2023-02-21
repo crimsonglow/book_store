@@ -9,10 +9,10 @@ if Rails.env.test?
 else
   require "shrine/storage/s3"
   s3_options = {
-    bucket:            "book-store-zs",
-    access_key_id:     "AKIATNY3W3ISJJQXHC45",
-    secret_access_key: "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",
-    region:            "us-east-1",
+    bucket:            "",
+    access_key_id:     "",
+    secret_access_key: "",
+    region:            "",
   }
   Shrine.storages = {
     cache: Shrine::Storage::S3.new(prefix: "cache", **s3_options),
