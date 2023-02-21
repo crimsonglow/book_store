@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :reviews
   resources :settings
   resources :settings_emails
-  resources :accounts
+  resource :account
   resources :coupons
   resources :checkout, param: :step
   resources :carts, path: '/carts/line_items'
