@@ -1,0 +1,40 @@
+.row.mb-60
+  .col-sm-5
+    %p.in-gold-500.font-18.mb-25
+      = t('settings.email')
+    = form_tag settings_email_path(current_user), method: :put, class: 'general-form-md' do
+      = hidden_field_tag :user_id, current_user.id
+      .form-group.mb-35
+        %label.control-label.input-label{for: "email"}= t('settings.enter_email')
+        %input#email.form-control{name:"email", type: "email", placeholder: "Enter your email"}
+      .general-text-align
+        = submit_tag t('settings.save'), class: 'btn btn-default mb-35'
+  .col-sm-5.col-sm-offset-1
+    %p.in-gold-500.font-18.mb-25= t('settings.password')
+    = form_tag account_path(current_user), method: :put, class: 'general-form-md divider-lg-bottom pb-25' do
+      .form-group.mb-30
+        %label.control-label.input-label{for: "oldPassword"}
+          = t('settings.old_password')
+        = text_field_tag "old_password", "", class: 'form-control', type: "password", id: 'oldPassword', placeholder: "Old Password"
+      .form-group.mb-30
+        %label.control-label.input-label{for: "password"}
+          = t('settings.new_password')
+        = text_field_tag "new_password", "", class: 'form-control', type: "password", id: 'password', placeholder: "New Password"
+      .form-group.mb-40
+        %label.control-label.input-label{for: "confirmPassword"}
+          = t('settings.confirm_password')
+        = text_field_tag "confirm_password", "", class: 'form-control', type: "password", id: 'confirmPassword', placeholder: "Confirm Password"
+      .general-text-align
+        = submit_tag t('settings.save'), class: 'btn btn-default mb-35'
+  .col-sm-12
+    %p.in-gold-500.font-18.mb-25= t('settings.remove_account')
+    = form_tag account_path(current_user), method: :delete do
+      .general-settings-btn
+        %button.btn.disabled.mb-20= t('settings.remove_account_submit')
+      .form-group.checkbox.general-settings-checkbox
+        %label.checkbox-label
+          %input.checkbox-input{type: "checkbox", hidden: "true"}
+          %span.checkbox-icon
+            %i.fa.fa-check
+          %span.checkbox-text= t('settings.understand_user_detele')
+          

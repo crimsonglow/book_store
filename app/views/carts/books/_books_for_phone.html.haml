@@ -1,0 +1,40 @@
+- @cart_books.order(:id).each do |book|
+  .general-cart-item.divider-lg-bottom.mb-30
+    = form_tag line_item_path(book.id), method: :delete do
+      = button_tag(type: "submit", class: 'close general-cart-close', 'aria-label': "Close") do
+        %span{'aria-hidden': "true"} &times;
+    .general-img-wrap-table
+      .thumbnail.general-thumbnail
+        %img.cart-img-shadow{src: @books_presenter.main_image_or_default(book), alt: "design-book"}
+        .thumb-hover
+          .general-thumb-link-wrap
+            = link_to book_path(book), class: 'thumb-hover-link' do
+              %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
+    %p.title
+      = link_to book.title, book_path(book)
+    %table.table
+      %tr
+        %td
+          %span.in-grey-600
+            = t('cart.price')
+        %td
+          %span.font-16.in-gold-500
+            = I18n.t('cart.current_price', price: book.price)
+      %tr
+        %td.vertical-middle
+          %span.in-grey-600
+            = t('cart.quantity')
+        %td
+          .input-group
+            = link_to line_item_path(minus: true, id: @cart_presenter.current_lineitem(book)), method: :PUT, class: 'input-link' do
+              %i.fa.fa-minus.line-heaght-40
+            %input.form-control.quantity-input{type: "text", value: "#{@cart_presenter.count_same_books(book)}"}
+            = link_to line_item_path(plus: true, id: @cart_presenter.current_lineitem(book)), method: :PUT, class: 'input-link' do
+              %i.fa.fa-plus.line-heaght-40
+      %tr
+        %td
+          %span.in-grey-600
+            = t('cart.subtotal')
+        %td
+          %span.font-16.in-gold-500
+            = @cart_presenter.subtotal_prise_book(book)

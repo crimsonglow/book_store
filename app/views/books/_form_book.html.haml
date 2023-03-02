@@ -1,0 +1,13 @@
+= form_tag line_items_path(line_item: {current_book: @current_book.id}), method: :post do
+  .col-xs-12.col-md-4
+    %p.h1.in-gold-500.mt-10
+      = @current_book.price
+  .col-xs-5.col-md-3
+    .input-group.general-position
+      %a.input-link{class: 'minus', href: "#"}
+        %i.fa.fa-minus.line-height-40
+      = text_field_tag 'count_books', '', class: 'form-control quantity-input input-count-book', value: 1
+      %a.input-link{class: 'plus', href: "#"}
+        %i.fa.fa-plus.line-height-40
+  .col-xs-7.col-md-5
+    = submit_tag 'Add to Cart', class: 'btn btn-default pull-right general-position'

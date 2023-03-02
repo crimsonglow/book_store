@@ -1,0 +1,47 @@
+version: 2.1
+orbs:
+  browser-tools: circleci/browser-tools@1.2.3
+jobs:
+  build:
+    docker:
+      - image: cimg/ruby:2.7.2-browsers
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+        environment:
+          RAILS_ENV: test
+      - image: cimg/postgres:14.0
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+        environment:
+          POSTGRES_USER: book_store_admin
+          POSTGRES_DB: book_store_test
+          POSTGRES_PASSWORD: 12325897AQz
+    steps:
+      - checkout
+      - browser-tools/install-browser-tools
+
+      - run: 
+          name: imagemagick
+          command: sudo apt install imagemagick
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Database setup
+          command: bin/rails db:schema:load --trace
+      - run:
+          name: Run Tests
+          command: |
+            mkdir /tmp/test-results
+            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
+            bundle exec rspec --format progress \
+                            --out /tmp/test-results/rspec.xml \
+                            --format progress \
+                            $TEST_FILES
+      - store_artifacts:
+          path: coverage

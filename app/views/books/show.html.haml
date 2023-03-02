@@ -1,0 +1,8 @@
+%main.container
+  = link_to url_for(:back), class: 'general-back-link' do
+    %i.fa.fa-long-arrow-left.mr-15
+    = t('book_page.back_to_result')
+  = render partial: 'books/show_book'
+  - if policy(:review).create? 
+    = render partial: 'books/reviews/review_form'
+  = render partial: 'books/reviews/users_reviews'
