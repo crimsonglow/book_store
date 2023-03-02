@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_18_103337) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_10_220427) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -74,10 +74,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_103337) do
     t.index ["book_id"], name: "index_book_authors_on_book_id"
   end
 
+  create_table "book_images", force: :cascade do |t|
+    t.text "image_data"
+    t.integer "image_type", default: 0
+    t.bigint "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_book_images_on_book_id"
+  end
+
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.string "photo"
     t.integer "published_year"
     t.float "heigth"
     t.float "width"
@@ -87,7 +95,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_103337) do
     t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "image_data"
     t.index ["category_id"], name: "index_books_on_category_id"
   end
 
@@ -184,8 +191,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_103337) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "book_authors", "authors"
-  add_foreign_key "book_authors", "books"
+  add_foreign_key "book_authors", "authors", on_delete: :cascade
+  add_foreign_key "book_authors", "books", on_delete: :cascade
+  add_foreign_key "book_images", "books", on_delete: :cascade
   add_foreign_key "books", "categories"
   add_foreign_key "coupons", "orders", on_delete: :nullify
   add_foreign_key "credit_cards", "orders"

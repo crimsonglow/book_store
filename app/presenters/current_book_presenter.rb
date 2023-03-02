@@ -1,4 +1,4 @@
-class CurrentBookPresenter < Rectify::Presenter
+class CurrentBookPresenter < ApplicationPresenter
   attribute :current_book, Book
 
   VISIBLE_LENGTH_DESCRIPTION_BOOK = 250
@@ -14,8 +14,6 @@ class CurrentBookPresenter < Rectify::Presenter
   def show_all_description_text
     current_book.description
   end
-
-  def img; end
 
   def show_description
     current_book.description[0..VISIBLE_LENGTH_DESCRIPTION_BOOK]

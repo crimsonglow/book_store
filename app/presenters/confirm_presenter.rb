@@ -1,4 +1,4 @@
-class ConfirmPresenter < Rectify::Presenter
+class ConfirmPresenter < ApplicationPresenter
   attribute :params
   attribute :current_order
 

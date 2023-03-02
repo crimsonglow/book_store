@@ -1,4 +1,4 @@
-class HeaderPresenter < Rectify::Presenter
+class HeaderPresenter < ApplicationPresenter
   attribute :current_order
 
   def all_categories

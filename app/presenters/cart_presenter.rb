@@ -1,4 +1,4 @@
-class CartPresenter < Rectify::Presenter
+class CartPresenter < ApplicationPresenter
   attribute :current_order
   START_PRICE = 0
 
@@ -7,7 +7,7 @@ class CartPresenter < Rectify::Presenter
   end
 
   def order_summary_price
-    current_order.line_items.sum { |item| item.quantity * item.book.price }
+    current_order.line_items.includes([:book]).sum { |item| item.quantity * item.book.price }
   end
 
   def order_total_price_with_coupon

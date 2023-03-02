@@ -46,12 +46,7 @@
     .general-cart-item.divider-lg
       - @order.line_items.each do |item|
         .general-img-wrap-table
-          .thumbnail.general-thumbnail
-            %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
-            .thumb-hover
-              .general-thumb-link-wrap
-                = link_to book_path(item.book), class: 'thumb-hover-link' do
-                  %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
+          %img.cart-img-shadow{src: @cart_presenter.main_image_or_default(item.book), alt: "design-book"}
         %p.title
           = item.book.title
         %P.in-grey-600.fw-300
@@ -100,12 +95,7 @@
           %tr
             %td
               .general-img-wrap-table
-                .thumbnail.general-thumbnail
-                  %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
-                  .thumb-hover
-                    .general-thumb-link-wrap
-                      = link_to book_path(item.book), class: 'thumb-hover-link' do
-                        %i.fa.fa-eye.thumb-icon{'aria-hidden': "true"}
+                %img.cart-img-shadow{src: @cart_presenter.main_image_or_default(item.book), alt: "design-book"}
             %td
               %p.title
                 = item.book.title

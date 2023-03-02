@@ -1,4 +1,4 @@
-class PaymentPresenter < Rectify::Presenter
+class PaymentPresenter < ApplicationPresenter
   attribute :params
   attribute :current_order
   attribute :form

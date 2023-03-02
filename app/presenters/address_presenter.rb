@@ -1,4 +1,4 @@
-class AddressPresenter < Rectify::Presenter
+class AddressPresenter < ApplicationPresenter
   attribute :params
   attribute :current_user
   attribute :current_order

@@ -10,7 +10,7 @@ class OrdersDecorator < Draper::CollectionDecorator
   end
 
   def take_line_items_prise(order)
-    order.line_items.map { |item| item.quantity * item.book.price }.sum
+    order.line_items.includes([:book]).map { |item| item.quantity * item.book.price }.sum
   end
 
   def current_status_order(params)

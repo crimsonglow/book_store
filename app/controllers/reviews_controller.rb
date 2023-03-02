@@ -4,12 +4,12 @@ class ReviewsController < ApplicationController
 
     review_service = ReviewService.new(reviews_form_params)
 
-    if review_service.save_review
+    if review_service.call
       flash[:success] = t('book_page.review.success_add_comment')
     else
-      flash[:error] = review_service.reviews_errors
+      flash[:error] = review_service.errors
     end
-    redirect_to book_path(params[:current_book])
+    redirect_to book_path(reviews_form_params[:current_book])
   end
 
   private

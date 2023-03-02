@@ -15,4 +15,18 @@ FactoryBot.define do
 
     category
   end
+
+  factory :review do
+    title { FFaker::Lorem.word }
+    text_review { FFaker::Lorem.word }
+
+    user
+    book
+  end
+
+  factory :book_image do
+    book_id { book.id }
+    image { File.open('app/assets/images/default.png') }
+    image_type { 'additional' }
+  end
 end

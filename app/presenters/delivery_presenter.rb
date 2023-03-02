@@ -1,4 +1,4 @@
-class DeliveryPresenter < Rectify::Presenter
+class DeliveryPresenter < ApplicationPresenter
   attribute :params
   attribute :current_order
   STEP = :fill_delivery

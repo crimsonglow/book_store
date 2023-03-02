@@ -83,10 +83,12 @@ group :test do
   gem 'capybara-screenshot'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
+  gem 'geckodriver-helper', '~> 0.0.3'
   gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
+  gem 'shrine-memory'
   gem 'simplecov', require: false
   gem 'site_prism'
   gem 'warden'

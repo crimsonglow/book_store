@@ -28,6 +28,7 @@ en:
     about_books: We pore through hundreds of new books each month and select the five best we can find to share with our members.
     get_started: Get Started
     best_sellers: Best Sellers
+    not_have_best_sellers: Not having the best sellers
   footer:
     home: Home
     shop: Shop
@@ -176,6 +177,9 @@ en:
     no_more_50: Max Length should be 50 characters
     no_more_15: Max Length should be 15 characters
     no_more_10: Max Length should be 10 characters
+    validate_review: Consist of a-z, A-Z, 0-9, or one of !#$%&'*+-/=?^_`{|}~.
+    main_image: The main picture has already been assigned
+    password_complexity: 'Complexity requirement not met. Please: use1 uppercase, 1 lowercase, 1 digit'
   controllers:
     deleted_account: Your account successfuly deleted
     error_deleted_account: Your account was not deleted

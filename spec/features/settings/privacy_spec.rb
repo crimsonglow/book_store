@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Settings privacy page', type: :feature do
   let!(:user) { create(:user) }
-  let(:user_attributes) { attributes_for(:user) }
+  let(:user_attributes) { attributes_for(:user, password: 'passwordAa1') }
 
   before do
     login_as(user, scope: :user)

@@ -16,11 +16,10 @@ Rails.application.routes.draw do
   end
   resources :line_items
   resources :orders
-  resources :addresses
   resources :reviews
   resources :settings
   resources :settings_emails
-  resources :accounts
+  resource :account
   resources :coupons
   resources :checkout, param: :step
   resources :carts, path: '/carts/line_items'
