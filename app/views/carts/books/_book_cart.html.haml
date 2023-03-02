@@ -3,7 +3,7 @@
     %td
       .general-img-wrap-table
         .thumbnail.general-thumbnail
-          %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
+          %img.cart-img-shado{src: @books_presenter.main_image_or_default(book), alt: "design-book"}
           .thumb-hover
             .general-thumb-link-wrap
               = link_to book_path(book), class: 'thumb-hover-link' do

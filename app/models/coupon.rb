@@ -1,3 +1,3 @@
 class Coupon < ApplicationRecord
-  belongs_to :orders, optional: true
+  belongs_to :order, optional: true
 end

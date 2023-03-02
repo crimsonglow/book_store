@@ -1,8 +1,8 @@
 class CartDeleteService
   private_class_method :new
 
-  def self.call(current_order, params)
-    new(current_order, params).call
+  def self.call(params, current_order)
+    new(params, current_order).call
   end
 
   def call
@@ -13,9 +13,9 @@ class CartDeleteService
 
   attr_reader :current_order, :params
 
-  def initialize(current_order, params)
-    @current_order = current_order
+  def initialize(params, current_order)
     @params = params
+    @current_order = current_order
   end
 
   def delete_order

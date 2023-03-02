@@ -3,7 +3,7 @@ class CouponsController < ApplicationController
     @coupon = Coupon.find_by(key: params[:coupon])
 
     if validate?
-      @coupon.update(order_id: current_order.id)
+      @coupon.update(order_id: params[:id])
     else
       flash[:error] = I18n.t('controllers.wrong_coupon')
     end
