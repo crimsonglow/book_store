@@ -6,6 +6,7 @@ RSpec.describe ChangePasswordService do
   let(:user) { create(:user) }
   let(:custom_password) { attributes_for(:user, password: 'passwordAa1') }
 
+
   shared_examples 'returns expected result' do
     before { current_subject }
 
