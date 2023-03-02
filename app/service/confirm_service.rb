@@ -1,7 +1,7 @@
 class ConfirmService
   attr_reader :current_order
 
-  BEGIN_SECRET_NUMBER = '#R'.freeze
+  BEGIN_SECRET_NUMBER = 'R'.freeze
   LENGTH_SECRET_NUMBER = 13
   RANGE_SECRET_NUMBER = (0..9).freeze
 

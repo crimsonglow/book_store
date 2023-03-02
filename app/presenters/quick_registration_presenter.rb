@@ -1,4 +1,4 @@
-class QuickRegistrationPresenter < Rectify::Presenter
+class QuickRegistrationPresenter < ApplicationPresenter
   attribute :params
   attribute :current_order
   STEP = :quick_registrate
